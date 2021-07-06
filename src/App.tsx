@@ -1,8 +1,16 @@
+import { BrowserRouter, Route } from 'react-router-dom';
+
+
 import { Home } from "./pages/Home";
+import { Signinlogin } from './pages/Signinlogin';
+
 
 function App() {
   return (
-    <Home />
+    <BrowserRouter>
+      <Route path="/" exact component={Home}/>
+      <Route path="/signinlogin" component={Signinlogin}/>
+    </BrowserRouter>
   );
 }
 
