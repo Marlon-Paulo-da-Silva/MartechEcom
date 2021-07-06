@@ -1,6 +1,8 @@
-
+import { useContext } from 'react';
+import CartContext from '../App'
 
 export function Cartbutton(){
+
   return(
     <div>
       <button className="cartbutton">
