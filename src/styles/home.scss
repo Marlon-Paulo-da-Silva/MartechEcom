@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.titulo {
+    margin: 4rem 0 7rem 0;
+    text-align: center;
+
+    h1{
+        font-size: 3rem;
+        display: inline-block;
+        position: relative;
+        z-index: 0;
+
+        &::after {
+            content: "";
+            position: relative;
+            
+        }
+    }
+
+    
+}
+
