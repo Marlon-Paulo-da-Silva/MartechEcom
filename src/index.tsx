@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import './styles/home.scss';
+import './styles/cartbutton.scss';
 
 ReactDOM.render(
   <React.StrictMode>

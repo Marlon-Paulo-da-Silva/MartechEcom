@@ -1,3 +1,5 @@
+import { Cartbutton } from "../component/Cartbutton";
+
 export function Home() {
     return (
         <div>
@@ -5,6 +7,7 @@ export function Home() {
                 <div className="titulo">
                     <h1>Produtos em Destaque</h1>
                 </div>
+                <Cartbutton></Cartbutton>
                 <div className="produto-centro container">
                     <div className="produto">
                         <div className="cabecalho-produto">
