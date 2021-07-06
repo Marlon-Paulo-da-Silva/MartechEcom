@@ -3,28 +3,30 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { Home } from "./pages/Home";
 import { Signinlogin } from './pages/Signinlogin';
 
-type CartContextType = {
+type Cart = {
   productId: number;
   name: string;
   totalQtde: number;
-
 }
 
-export const CartContext = createContext({} as any);
+type CartContextType = {
+  cart: Cart | undefined;
+  incrementCart: () => void;
+}
 
-
+export const CartContext = createContext({} as CartContextType);
 
 
 function App() {
 
-  const [cart, setCart] = useState(0);
-
+  const [cart, setCart] = useState<Cart>();
+ 
   function incrementCart(){
-    setCart(cart + 1);
+    
   }
   return (
     <BrowserRouter>
-    <CartContext.Provider value={{cart, setCart}}>
+    <CartContext.Provider value={{cart, incrementCart}}>
       <Route path="/" exact component={Home}/>
       <Route path="/signinlogin" component={Signinlogin}/>
     </CartContext.Provider>
