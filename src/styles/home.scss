@@ -30,55 +30,91 @@ body{
     padding: 0;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
-}
 
-h1, p{
-    margin: 0;
-}
+    h1, p{
+        margin: 0;
+    }
+    
+    a{
+        text-decoration: none;
+    }
+    
+    
 
-a{
-    text-decoration: none;
-}
-
-img{
-    max-width: 100%;
-    height: auto;
-}
-
-.destaque {
-    padding: 0 10px
-}
-.titulo {
-    margin: 4rem 0 7rem 0;
-    text-align: center;
-
-    h1{
-        font-size: 3rem;
-        display: inline-block;
-        position: relative;
-        z-index: 0;
-
-        &::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            bottom: -20%;
-            transform: translate(-50%, -50%);
-            background-color: #dd2323;
-            width: 50%;
-            height: 0.4rem;
-            z-index: 1;
-
-
+    .titulo {
+        margin: 4rem 0 7rem 0;
+        text-align: center;
+    
+        h1{
+            font-size: 3rem;
+            display: inline-block;
+            position: relative;
+            z-index: 0;
+    
+            &::after {
+                content: "";
+                position: absolute;
+                left: 50%;
+                bottom: -20%;
+                transform: translate(-50%, -50%);
+                background-color: #dd2323;
+                width: 50%;
+                height: 0.4rem;
+                z-index: 1;
+    
+    
+            }
         }
     }
 }
 
-.produto-centro {
+
+
+.container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    
+    width: 100%;
+    padding: 0 30px;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     gap: 1rem 1rem;
-    
-    
+
+    .card {
+        width: 320px;
+        height: 400px;
+        background-color: var(--dark-color);
+        border-radius: 1rem;
+        padding: 4rem 2rem 0;
+        color: var(--white-color);
+        overflow-y: hidden;
+
+        .card_img{
+            position: absolute;
+            width: 250px;
+            text-align: center;
+            filter: drop-shadow(5px 10px 15px rgba(8,9,13,.4));
+        }
+
+        .card_data{
+            transform: translateY(13.2rem);
+            text-align: center;
+        }
+
+        .card_title{
+            font-size: var(--h1-font-size);
+            color: var(--first-color);
+            margin-bottom: .5rem;
+        }
+
+        .card_price{
+            display: inline-block;
+            font-size: var(--h2-font-size);
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+        }
+        
+    }
 }
+
+
+
 

@@ -12,7 +12,7 @@ const products = [
     },
     {
       _id: "2",
-      name: "Head Phones",
+      name: "Tenis Nike",
       image:
         "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/2.png",
   
@@ -22,7 +22,7 @@ const products = [
     },
     {
       _id: "3",
-      name: "iPhone",
+      name: "Tenis Nike",
       image:
       "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/3.png",
   
@@ -32,7 +32,7 @@ const products = [
     },
     {
       _id: "4",
-      name: "Sony Playstation 5 Controller",
+      name: "Tenis Nike",
       image:
       "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/4.png",
   
@@ -42,7 +42,7 @@ const products = [
     },
     {
       _id: "5",
-      name: "Laptop",
+      name: "Tenis Nike",
       image:
       "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/5.png",
   
@@ -52,7 +52,7 @@ const products = [
     },
     {
       _id: "6",
-      name: "Apple Watch",
+      name: "Tenis Nike",
       image:
       "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/6.png",
   
@@ -62,7 +62,7 @@ const products = [
     },
     {
         _id: "7",
-        name: "Apple Watch",
+        name: "Tenis Nike",
         image:
         "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/7.png",
     
@@ -72,7 +72,7 @@ const products = [
       },
       {
         _id: "8",
-        name: "Apple Watch",
+        name: "Tenis Nike",
         image:
         "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/8.png",
     
@@ -82,7 +82,7 @@ const products = [
       },
       {
         _id: "9",
-        name: "Apple Watch",
+        name: "Tenis Nike",
         image:
         "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/9.png",
     
@@ -92,7 +92,7 @@ const products = [
       },
       {
         _id: "10",
-        name: "Apple Watch",
+        name: "Tenis Nike",
         image:
         "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/10.png",
     

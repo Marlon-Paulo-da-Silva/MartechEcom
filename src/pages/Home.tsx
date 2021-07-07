@@ -11,7 +11,7 @@ export function Home() {
                     <h1>Produtos em Destaque</h1>
                 </div>
                 <Cartbutton></Cartbutton>
-                <div className="produto-centro container">
+                <div className="container">
                     {products.map( (product) => (
                        <div className="card">
                            <img className="card_img" src={product.image} alt="product" />
