@@ -1,8 +1,50 @@
-* {
-    margin: 0;
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+//Variáveis 
+:root {
+    --first-color: #F2A20C;
+    --white-color: #E9EAEC;
+    --dark-color: #272D40;
+    --dark-color-lighter: #F2F5FF;
+
+
+//Fonte e Tipografia
+
+--body-font: 'Poppins', sans-serif;
+--h1-font-size: 1.5rem;
+--h2-font-size: 1.25rem;
+--normal-font-size: 1rem;
+--small-font-size: .875rem;
+
+}
+
+//Base
+
+*, ::before, ::after{
     box-sizing: border-box;
 }
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+
+h1, p{
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
 .destaque {
     padding: 0 10px
 }
