@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Cartbutton } from "../Component/Cartbutton";
+import { Cartbutton } from "../component/Cartbutton";
 import products from "../Data/data";
 
 
