@@ -4,10 +4,17 @@ import { Cartbutton } from "../component/Cartbutton";
 import { Products } from "../component/Products";
 import { CartItem } from "../component/CartItem";
 
+import { AppContext } from '../context/cartContext';
+import { Types } from '../context/cartReducer';
+
 import products from "../Data/data";
 
 
 export function Home() {
+
+    const { state, dispatch } = useContext(AppContext);
+
+
     return (
         <div>
             <section className="section destaque">
@@ -29,7 +36,11 @@ export function Home() {
                                <span className="card_price">{product.price}</span>
                                <p className="card_description">Lorem ipsum dolor consectetur adipisicing elit. Tenet</p>
                                
-                               <a href="#" className="card_button">Adicionar ao Carrinho</a>
+                               <a href="#" className="card_button" onClick={() => {
+                                    dispatch({
+                                    type: Types.Add,
+                                    })
+                                }}>Adicionar ao Carrinho</a>
                            </div>
                         </div>
                     ))}  
