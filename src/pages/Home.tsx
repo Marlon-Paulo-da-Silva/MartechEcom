@@ -22,8 +22,8 @@ export function Home() {
                                </h1>
                                <span className="card_price">{product.price}</span>
                                <p className="card_description">Lorem ipsum dolor consectetur adipisicing elit. Tenet</p>
-                               <a href="#" className="card_button">Comprar Agora</a>
-                               <a href="#" className="card_addtocart">Adicionar ao Carrinho</a>
+                               
+                               <a href="#" className="card_button">Adicionar ao Carrinho</a>
                            </div>
                         </div>
                     ))}  
