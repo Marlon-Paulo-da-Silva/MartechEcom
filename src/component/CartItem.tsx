@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AppContext } from '../context/cartContext';
 import { Types } from '../context/cartReducer';
 
-export const Cart = () => {
+export const CartItem = () => {
   const [form, setForm] = React.useState({
     name: "",
     price: 0
@@ -67,4 +67,4 @@ export const Cart = () => {
   );
 };
 
-export default Cart;
+export default CartItem;
