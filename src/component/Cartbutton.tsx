@@ -1,4 +1,6 @@
 import { useState ,useContext, createContext, ButtonHTMLAttributes } from 'react';
+import { AppContext } from '../context/cartContext';
+
 import CartContext from '../App'
 
 type CartbuttonProps = ButtonHTMLAttributes<HTMLButtonElement>;

@@ -1,6 +1,8 @@
 import { useContext } from "react";
+import {Cart} from "../component/Cart";
 import { Cartbutton } from "../component/Cartbutton";
 import { Products } from "../component/Products";
+
 import products from "../Data/data";
 
 
@@ -13,6 +15,7 @@ export function Home() {
                 </div>
                 <Cartbutton></Cartbutton>
                 <Products></Products>
+                <Cart></Cart>
                 <div className="container">
                     {products.map( (product) => (
                        <div className="card">
