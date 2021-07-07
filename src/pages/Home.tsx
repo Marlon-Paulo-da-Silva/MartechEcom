@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { Cartbutton } from "../component/Cartbutton";
+import { Products } from "../component/Products";
 import products from "../Data/data";
 
 
@@ -11,6 +12,7 @@ export function Home() {
                     <h1>Produtos em Destaque</h1>
                 </div>
                 <Cartbutton></Cartbutton>
+                <Products></Products>
                 <div className="container">
                     {products.map( (product) => (
                        <div className="card">

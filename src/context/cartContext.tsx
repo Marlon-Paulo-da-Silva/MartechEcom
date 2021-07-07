@@ -5,7 +5,7 @@ import { productReducer,
         ProductActions,
         ShoppingCartActions 
        } from './cartReducer';
-       
+
 type ProductType = {
   id: number;
   name: string;
@@ -26,10 +26,14 @@ const AppContext = createContext<{
   state: initialState,
   dispatch: () => null
 });
-const mainReducer = ({ products, shoppingCart }, action) => ({
+const mainReducer = (
+  { products, shoppingCart }: InitialStateType,
+  action: ProductActions | ShoppingCartActions
+) => ({
   products: productReducer(products, action),
-  shoppingCart: shoppingCartReducer(shoppingCart, action),
+  shoppingCart: shoppingCartReducer(shoppingCart, action)
 });
+
 const AppProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(mainReducer, initialState);
   return (
