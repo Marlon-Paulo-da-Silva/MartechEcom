@@ -1,7 +1,6 @@
 import { useContext } from "react";
-import { Cartbutton } from "../component/Cartbutton";
+import { Cartbutton } from "../Component/Cartbutton";
 
-import { CartContext } from '../App'
 
 export function Home() {
     return (
