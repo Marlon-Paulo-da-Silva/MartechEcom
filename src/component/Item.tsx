@@ -1,4 +1,4 @@
-import { CartItemType } from "../App";
+import { CartItemType } from "../pages/Home";
 import products from "../Data/data";
 
 type Props = {
@@ -7,6 +7,8 @@ type Props = {
 }
 
 const Item: React.FC<Props> = ({item, handleAddToCart}) =>{
+
+    console.log('itens dentro do compon', item);
     
     return(
         <div>
@@ -21,10 +23,12 @@ const Item: React.FC<Props> = ({item, handleAddToCart}) =>{
                                <span className="card_price">{item.price}</span>
                                <p className="card_description">Lorem ipsum dolor consectetur adipisicing elit. Tenet</p>
                                
-                               <a href="#" className="card_button" onClick={() => {  }}>Adicionar ao Carrinho</a>
+                               <a href="#" className="card_button" onClick={() => handleAddToCart(item)}>Adicionar ao Carrinho</a>
                            </div>
                         </div>
                 </div>
         </div>
     );
 }
+
+export default Item;

@@ -1,4 +1,3 @@
-import foto1 from "./assets/images/1.png";
 
 const products = [
     {
@@ -9,6 +8,7 @@ const products = [
       price: 89.99,
       rating: 4.5,
       numReviews: 12,
+      amount: 0,
     },
     {
       _id: "2",
@@ -19,6 +19,8 @@ const products = [
       price: 599.99,
       rating: 4.0,
       numReviews: 8,
+      amount: 0,
+
     },
     {
       _id: "3",
@@ -29,6 +31,8 @@ const products = [
       price: 929.99,
       rating: 3,
       numReviews: 12,
+      amount: 0,
+
     },
     {
       _id: "4",
@@ -39,6 +43,8 @@ const products = [
       price: 399.99,
       rating: 5,
       numReviews: 12,
+      amount: 0,
+
     },
     {
       _id: "5",
@@ -49,6 +55,8 @@ const products = [
       price: 49.99,
       rating: 3.5,
       numReviews: 10,
+      amount: 0,
+
     },
     {
       _id: "6",
@@ -59,6 +67,8 @@ const products = [
       price: 29.99,
       rating: 4,
       numReviews: 12,
+      amount: 0,
+
     },
     {
         _id: "7",
@@ -69,6 +79,8 @@ const products = [
         price: 29.99,
         rating: 4,
         numReviews: 12,
+        amount: 0,
+
       },
       {
         _id: "8",
@@ -79,6 +91,8 @@ const products = [
         price: 29.99,
         rating: 4,
         numReviews: 12,
+        amount: 0,
+
       },
       {
         _id: "9",
@@ -89,6 +103,8 @@ const products = [
         price: 29.99,
         rating: 4,
         numReviews: 12,
+        amount: 0,
+
       },
       {
         _id: "10",
@@ -100,7 +116,8 @@ const products = [
         price: 29.99,
         rating: 4,
         numReviews: 12,
+        amount: 0,
+
       },
   ];
-  
   export default products;
