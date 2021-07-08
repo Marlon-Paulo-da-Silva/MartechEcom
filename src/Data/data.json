@@ -1,6 +1,6 @@
  [
   {
-    "_id": "1",
+    "_id": 1,
     "name": "Tenis Nike",
     "image": "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/1.png",
 
@@ -10,7 +10,7 @@
     "amount": 0
   },
   {
-    "_id": "2",
+    "_id": 2,
     "name": "Tenis Nike",
     "image":
       "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/2.png",
@@ -22,7 +22,7 @@
 
   },
   {
-    "_id": "3",
+    "_id": 3,
     "name": "Tenis Nike",
     "image":
     "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/3.png",
@@ -34,7 +34,7 @@
 
   },
   {
-    "_id": "4",
+    "_id": 4,
     "name": "Tenis Nike",
     "image":
     "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/4.png",
@@ -46,7 +46,7 @@
 
   },
   {
-    "_id": "5",
+    "_id": 5,
     "name": "Tenis Nike",
     "image":
     "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/5.png",
@@ -58,7 +58,7 @@
 
   },
   {
-    "_id": "6",
+    "_id": 6,
     "name": "Tenis Nike",
     "image":
     "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/6.png",
@@ -70,7 +70,7 @@
 
   },
   {
-      "_id": "7",
+      "_id": 7,
       "name": "Tenis Nike",
       "image":
       "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/7.png",
@@ -82,7 +82,7 @@
 
     },
     {
-      "_id": "8",
+      "_id": 9,
       "name": "Tenis Nike",
       "image":
       "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/8.png",
@@ -94,7 +94,7 @@
 
     },
     {
-      "_id": "9",
+      "_id": 10,
       "name": "Tenis Nike",
       "image":
       "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/9.png",
@@ -106,7 +106,7 @@
 
     },
     {
-      "_id": "10",
+      "_id": 11,
       
       "name": "Tenis Nike",
       "image":
