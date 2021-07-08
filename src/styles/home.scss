@@ -135,6 +135,10 @@ body{
             &:hover{
                 box-shadow: 0 18px 40px -12px rgba(242, 162, 12, .35);
             }
+
+            &:active {
+                filter: brightness(0.9);
+            }
         }
 
         .card_img,

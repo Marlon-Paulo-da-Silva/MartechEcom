@@ -92,6 +92,7 @@ const products = [
       },
       {
         _id: "10",
+        
         name: "Tenis Nike",
         image:
         "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/10.png",

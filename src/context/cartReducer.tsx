@@ -21,6 +21,7 @@ type ProductType = {
   id: number;
   name: string;
   price: number;
+  image: string;
 };
 
 type ProductPayload = {
@@ -28,6 +29,7 @@ type ProductPayload = {
     id: number;
     name: string;
     price: number;
+    image: string;
   };
   [Types.Delete]: {
     id: number;
@@ -49,7 +51,8 @@ export const productReducer = (
         {
           id: action.payload.id,
           name: action.payload.name,
-          price: action.payload.price
+          price: action.payload.price,
+          image: action.payload.image
         }
       ];
     case Types.Delete:
