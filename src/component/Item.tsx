@@ -1,5 +1,4 @@
 import { CartItemType } from "../pages/Home";
-import products from "../Data/data";
 
 type Props = {
     item: CartItemType;

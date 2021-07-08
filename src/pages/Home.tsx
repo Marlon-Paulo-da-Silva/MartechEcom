@@ -5,7 +5,6 @@ import { Cartbutton } from "../Component/Cartbutton";
 import { CartItem } from "../Component/CartItem";
 import {Item} from "../Component/Item";
 
-import products from "../Data/data";
 
 import {useQuery} from 'react-query';
 
@@ -37,8 +36,15 @@ type Products = {
 
 export function Home() {
 
+    const [cartOpen, setCartOpen] = useState(false);
+    const [carItems, setCartItems] = useState([] as CartItemType[]);
+
+
+
+
     const {data, isLoading, error} = useQuery<CartItemType[]>('products', getProducts);
-    console.log( 'inicial', getProducts );
+
+
 
     const getTotalItems = () => null;
 
@@ -57,7 +63,7 @@ export function Home() {
                     <h1>Produtos em Destaque</h1>
                 </div>
 
-                {/* Precisa adicionar o elemento */}
+                
                 <div className="container">
                     {data?.map((item) => (
                        <Item item={item}  handleAddToCart={handleAddToCart}/>
