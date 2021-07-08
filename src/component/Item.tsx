@@ -6,9 +6,9 @@ type Props = {
     handleAddToCart: (clickedItem: CartItemType) => void
 }
 
-const Item: React.FC<Props> = ({item, handleAddToCart}) =>{
+export const Item: React.FC<Props> = ({item, handleAddToCart}) =>{
 
-    console.log('itens dentro do compon', item);
+    console.log('itens dentro do compon', item.name);
     
     return(
         <div>

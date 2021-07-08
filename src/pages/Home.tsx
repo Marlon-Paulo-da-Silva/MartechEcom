@@ -1,9 +1,9 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useState} from "react";
 
-import { Cartbutton } from "../component/Cartbutton";
-import { CartItem } from "../component/CartItem";
-import Item from "../component/Item";
+import { Cartbutton } from "../Component/Cartbutton";
+import { CartItem } from "../Component/CartItem";
+import {Item} from "../Component/Item";
 
 import products from "../Data/data";
 
@@ -28,7 +28,7 @@ export type CartItemType = {
 
 //integrar com a API
 const getProducts = async(): Promise<CartItemType[]> =>
-  await(await fetch("../Data/data.json")).json();
+  await(await fetch("https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/Data/data.json")).json();
 
 type Products = {
     item: CartItemType;
