@@ -24,10 +24,16 @@ export type CartItemType = {
   amount: number;
 }
 
-// integrar com a API
-const getProducts = async(): Promise<CartItemType[]> =>
-  await(await fetch("../Data/data")).json();
 
+
+//integrar com a API
+const getProducts = async(): Promise<CartItemType[]> =>
+  await(await fetch("../Data/data.json")).json();
+
+type Products = {
+    item: CartItemType;
+    handleAddToCart: (clickedItem: CartItemType) => void
+}
 
 export function Home() {
 
