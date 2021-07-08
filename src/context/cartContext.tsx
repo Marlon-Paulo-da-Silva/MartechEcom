@@ -6,11 +6,12 @@ import { productReducer,
         ShoppingCartActions 
        } from './cartReducer';
 
-type ProductType = {
+export type ProductType = {
   id: number;
   name: string;
   price: number;
   image: string;
+  amount: number;
 }
 type InitialStateType = {
   products: ProductType[];

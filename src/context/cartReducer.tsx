@@ -17,11 +17,12 @@ export enum Types {
 
 // Product
 
-type ProductType = {
+export type ProductType = {
   id: number;
   name: string;
   price: number;
   image: string;
+  amount: number;
 };
 
 type ProductPayload = {
@@ -30,6 +31,7 @@ type ProductPayload = {
     name: string;
     price: number;
     image: string;
+    amount: number;
   };
   [Types.DeleteToCart]: {
     id: number;
@@ -52,7 +54,8 @@ export const productReducer = (
           id: action.payload.id,
           name: action.payload.name,
           price: action.payload.price,
-          image: action.payload.image
+          image: action.payload.image,
+          amount: action.payload.amount + 1,
         }
       ];
     case Types.DeleteToCart:

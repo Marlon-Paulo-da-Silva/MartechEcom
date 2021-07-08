@@ -15,7 +15,7 @@ export const CartItem = () => {
       [type]: value
     }));
 
-    console.log(form);
+    console.log(form, 'form do cart item');
   };
 
   const createProduct = () => {
