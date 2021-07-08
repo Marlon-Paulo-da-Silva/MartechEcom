@@ -14,11 +14,13 @@ export const CartItem = () => {
       ...form,
       [type]: value
     }));
+
+    console.log(form);
   };
 
   const createProduct = () => {
     dispatch({
-      type: Types.Create,
+      type: Types.AddToCart,
       payload: {
         id: Math.round(Math.random() * 10000),
         name: form.name,
@@ -29,7 +31,7 @@ export const CartItem = () => {
 
   const deleteProduct = (id: number) => {
     dispatch({
-      type: Types.Delete,
+      type: Types.DeleteToCart,
       payload: {
         id,
       }

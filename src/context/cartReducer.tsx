@@ -10,8 +10,8 @@ type ActionMap<M extends { [index: string]: any }> = {
 };
 
 export enum Types {
-  Create = "CREATE_PRODUCT",
-  Delete = "DELETE_PRODUCT",
+  AddToCart = "ADD_TO_CART",
+  DeleteToCart = "DELETE_TO_CART",
   Add = "ADD_PRODUCT"
 }
 
@@ -25,13 +25,13 @@ type ProductType = {
 };
 
 type ProductPayload = {
-  [Types.Create]: {
+  [Types.AddToCart]: {
     id: number;
     name: string;
     price: number;
     image: string;
   };
-  [Types.Delete]: {
+  [Types.DeleteToCart]: {
     id: number;
   };
 };
@@ -45,7 +45,7 @@ export const productReducer = (
   action: ProductActions | ShoppingCartActions
 ) => {
   switch (action.type) {
-    case Types.Create:
+    case Types.AddToCart:
       return [
         ...state,
         {
@@ -55,7 +55,7 @@ export const productReducer = (
           image: action.payload.image
         }
       ];
-    case Types.Delete:
+    case Types.DeleteToCart:
       return [...state.filter(product => product.id !== action.payload.id)];
     default:
       return state;
