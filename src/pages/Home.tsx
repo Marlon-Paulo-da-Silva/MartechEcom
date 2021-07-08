@@ -1,8 +1,8 @@
 import React from "react";
 import { useContext } from "react";
 
-import { Cartbutton } from "../Component/Cartbutton";
-import { CartItem } from "../Component/CartItem";
+import { Cartbutton } from "../component/Cartbutton";
+import { CartItem } from "../component/CartItem";
 
 import products from "../Data/data";
 

@@ -9,7 +9,7 @@ import Drawer from '@material-ui/core/Drawer';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Grid from '@material-ui/core/Grid';
 import Badge from '@material-ui/core/Badge';
-
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 
 export type CartItemType = {
@@ -24,15 +24,24 @@ const getProducts = async(): Promise<CartItemType> =>
   await(await fetch("../Data/data")).json();
 
 function App() {
-    const {data, isLoading, error} = useQuery<CartItemType[]>('products', getProducts);
-    console.log( 'inicia', getProducts );
+    const {data, isLoading, error} = useQuery<CartItemType>('products', getProducts);
+    console.log( 'inicial', getProducts );
+
+    const getTotalItems = () => null;
+
+    const handleAddToCart = (clickedItem: CartItemType) => null;
+
+    const handleRemoveFromCart = () => null;
+
+    // if(isLoading) return <LinearProgress />;
+    if(error) return <div>Algo deu errado...</div>
+
+
   return (
 
     <BrowserRouter>
-    <AppProvider>
       <Route path="/" exact component={Home}/>
       <Route path="/signinlogin" component={Signinlogin}/>
-      </AppProvider>
     </BrowserRouter>
     
   );
