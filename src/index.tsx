@@ -4,6 +4,7 @@ import App from './App';
 
 import './styles/home.scss';
 import './styles/cartbutton.scss';
+import './styles/signinlogin.scss';
 
 ReactDOM.render(
   <React.StrictMode>

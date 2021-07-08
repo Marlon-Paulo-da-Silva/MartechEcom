@@ -1,8 +1,8 @@
 import { useContext } from "react";
 
-import { Cartbutton } from "../component/Cartbutton";
-import { Products } from "../component/Products";
-import { CartItem } from "../component/CartItem";
+import { Cartbutton } from "../Component/Cartbutton";
+import { Products } from "../Component/Products";
+import { CartItem } from "../Component/CartItem";
 
 import { AppContext } from '../context/cartContext';
 import { Types } from '../context/cartReducer';
