@@ -66,7 +66,7 @@ export function Home() {
     const handleRemoveFromCart = (id: number) => (
         setCartItems(prev => (
             prev.reduce((ack, item) => {
-                if(item.id === id){
+                if(item._id === id){
                     if (item.amount === 1) return ack;
                     return [...ack, {...item, amount: item.amount - 1}];
                 } else {
