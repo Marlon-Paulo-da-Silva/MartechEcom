@@ -1,15 +1,18 @@
 import React from "react";
 import { useContext, useState} from "react";
-
-import { Cartbutton } from "../Component/Cartbutton";
-import { CartItem } from "../Component/CartItem";
-import {Item} from "../Component/Item";
-
-
 import {useQuery} from 'react-query';
 
+import { Cartbutton } from "../Component/Cartbutton";
+import  CartItem  from "../Component/CartItem";
+import { Item } from "../Component/Item";
+import Cart from "../Component/Cart";
+
+
+
+
 import Drawer from '@material-ui/core/Drawer';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';import LinearProgress from '@material-ui/core/LinearProgress';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import Grid from '@material-ui/core/Grid';
 import Badge from '@material-ui/core/Badge';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
@@ -37,9 +40,7 @@ type Products = {
 export function Home() {
 
     const [cartOpen, setCartOpen] = useState(false);
-    const [carItems, setCartItems] = useState([] as CartItemType[]);
-
-
+    const [cartItems, setCartItems] = useState([] as CartItemType[]);
 
 
     const {data, isLoading, error} = useQuery<CartItemType[]>('products', getProducts);
@@ -64,12 +65,15 @@ export function Home() {
                 </div>
                 <div className="DrawerStyle">
                     <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
-                        Carrinho de compras
+                        <Cart 
+                            cartItems={cartItems} 
+                            addToCart={handleAddToCart}
+                            removeFromCart={handleRemoveFromCart}  />
                     </Drawer>
                 </div>
                 
                 <div className="IconButtonStyle" onClick={() => setCartOpen(true)}>
-                    <Badge badgeContent={getTotalItems(carItems)} color='error' />
+                    <Badge badgeContent={getTotalItems(cartItems)} color='error' />
                     <ShoppingCartIcon />
                 </div>
 
