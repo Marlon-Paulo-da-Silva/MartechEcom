@@ -49,15 +49,24 @@ export function Home() {
 
     const getTotalItems = (items: CartItemType[]) => items.reduce((ack: number, items) => ack + items.amount, 0);
 
-    const handleAddToCart = (clickedItem: CartItemType) => null;
+    const handleAddToCart = (clickedItem: CartItemType) => (
+        setCartItems(prev => {
+            const isItemCart = prev.find(item => item._id === clickedItem._id )
+        
+        
+            if(isItemCart) {
+                return prev.map(item => (item._id === clickedItem._id ?
+                    {...item, amount: item.amount + 1} : item))
+            }
 
-    const handleRemoveFromCart = () => null;
+            return [...prev, {...clickedItem, amount: 1}];
+        })
+    )
 
- 
-
+    // const removeFromCart = () => void;
     
 
-    return (
+    return ( 
         <div>
             <section className="section destaque">
                 <div className="titulo">
@@ -65,10 +74,10 @@ export function Home() {
                 </div>
                 <div className="DrawerStyle">
                     <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
-                        <Cart 
+                        {/* <Cart 
                             cartItems={cartItems} 
                             addToCart={handleAddToCart}
-                            removeFromCart={handleRemoveFromCart}  />
+                            removeFromCart={handleRemoveFromCart}  /> */}
                     </Drawer>
                 </div>
                 
