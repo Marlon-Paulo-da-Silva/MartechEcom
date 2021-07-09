@@ -9,7 +9,7 @@ import {Item} from "../Component/Item";
 import {useQuery} from 'react-query';
 
 import Drawer from '@material-ui/core/Drawer';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';import LinearProgress from '@material-ui/core/LinearProgress';
 import Grid from '@material-ui/core/Grid';
 import Badge from '@material-ui/core/Badge';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
@@ -46,7 +46,7 @@ export function Home() {
 
 
 
-    const getTotalItems = () => null;
+    const getTotalItems = (items: CartItemType[]) => items.reduce((ack: number, items) => ack + items.amount, 0);
 
     const handleAddToCart = (clickedItem: CartItemType) => null;
 
@@ -61,6 +61,16 @@ export function Home() {
             <section className="section destaque">
                 <div className="titulo">
                     <h1>Produtos em Destaque</h1>
+                </div>
+                <div className="DrawerStyle">
+                    <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
+                        Carrinho de compras
+                    </Drawer>
+                </div>
+                
+                <div className="IconButtonStyle" onClick={() => setCartOpen(true)}>
+                    <Badge badgeContent={getTotalItems(carItems)} color='error' />
+                    <ShoppingCartIcon />
                 </div>
 
                 

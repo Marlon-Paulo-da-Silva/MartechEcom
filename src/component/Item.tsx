@@ -7,7 +7,7 @@ type Props = {
 
 export const Item: React.FC<Props> = ({item, handleAddToCart}) =>{
 
-    console.log('itens dentro do compon', item.name);
+    console.log('itens dentro de ItemCompo ', item.name);
     
     return(
         <div>
