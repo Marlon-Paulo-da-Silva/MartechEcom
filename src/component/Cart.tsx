@@ -11,6 +11,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
     return (
         <div>
             <h2>Seu Carrinho de Compras</h2>
+            <div className="cart"></div>
             {cartItems.length === 0 ? <p>Sem itens no carrinho</p> : null}
             {cartItems.map(item  => (
                 <CartItem 

@@ -61,9 +61,9 @@ export function Home() {
 
             return [...prev, {...clickedItem, amount: 1}];
         })
-    )
+    );
 
-    // const removeFromCart = () => void;
+    const handleRemoveFromCart = () => null;
     
 
     return ( 
@@ -74,10 +74,11 @@ export function Home() {
                 </div>
                 <div className="DrawerStyle">
                     <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
-                        {/* <Cart 
+                        
+                        <Cart 
                             cartItems={cartItems} 
                             addToCart={handleAddToCart}
-                            removeFromCart={handleRemoveFromCart}  /> */}
+                            removeFromCart={handleRemoveFromCart}  />
                     </Drawer>
                 </div>
                 
