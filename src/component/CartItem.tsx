@@ -10,7 +10,7 @@ type Props = {
 }
 
 const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
-  <div>
+  <div className="cartItem">
     <h3>{item.name}</h3>
     <div className="information">
       <p>Preço: ${item.price}</p>
