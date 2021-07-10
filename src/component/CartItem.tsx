@@ -9,6 +9,12 @@ type Props = {
 
 }
 
+type TotalOrder = {
+  qtde: number;
+}
+
+
+
 const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
   <div className="cartItem">
     <h3>{item.name}</h3>
