@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 
+import AuthContext from '../contexts/authContext';
 import {SignIn} from '../services/auth';
 
 import googleIconImg from '../assets/images/google-icon.svg';
@@ -8,12 +9,15 @@ import googleIconImg from '../assets/images/google-icon.svg';
 
 export function Signinlogin() {
 
+  const {signed} = useContext(AuthContext);
+  console.log('contexto', signed);
+
   function handleCreateAccount() { }
 
   async function handleLogin() { 
     const response = await SignIn();
 
-    console.log(response);
+    console.log('response');
   }
  
   function handleToggle(){
