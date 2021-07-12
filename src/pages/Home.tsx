@@ -2,6 +2,8 @@ import React from "react";
 import { useContext, useState} from "react";
 import {useQuery} from 'react-query';
 
+import AuthContext from "../contexts/authContext";
+
 import { Cartbutton } from "../Component/Cartbutton";
 import  CartItem  from "../Component/CartItem";
 import { Item } from "../Component/Item";
@@ -17,6 +19,7 @@ import Grid from '@material-ui/core/Grid';
 import Badge from '@material-ui/core/Badge';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import { Link } from "react-router-dom";
+
 
 
 export type CartItemType = {
@@ -40,6 +43,10 @@ type Products = {
 }
 
 export function Home() {
+    const {signed} = useContext(AuthContext);
+
+    
+
 
     const [cartOpen, setCartOpen] = useState(false);
     const [cartItems, setCartItems] = useState([] as CartItemType[]);
@@ -81,7 +88,9 @@ export function Home() {
 
     return ( 
         <div>
-            <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Entrar no sistema</button></Link>
+
+            {signed  ? <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Minha Conta</button></Link> : <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Entrar no sistema</button></Link>}
+            
             <section className="section destaque">
                 <div className="titulo">
                     <h1>Produtos em Destaque</h1>

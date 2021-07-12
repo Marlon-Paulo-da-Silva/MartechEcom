@@ -8,9 +8,10 @@ import googleIconImg from '../assets/images/google-icon.svg';
 
 export function Signinlogin() {
 
-  const {signed, signIn} = useContext(AuthContext);
+  const {signed, signIn, user} = useContext(AuthContext);
 
-  console.log('contexto', signed);
+  console.log('contexto na singinlogin', signed);
+  console.log('contexto na singinlogin', user);
 
   function handleCreateAccount() { }
 
