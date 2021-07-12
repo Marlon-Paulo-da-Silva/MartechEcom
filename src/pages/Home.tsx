@@ -16,6 +16,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import Grid from '@material-ui/core/Grid';
 import Badge from '@material-ui/core/Badge';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import { Link } from "react-router-dom";
 
 
 export type CartItemType = {
@@ -80,6 +81,7 @@ export function Home() {
 
     return ( 
         <div>
+            <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Entrar no sistema</button></Link>
             <section className="section destaque">
                 <div className="titulo">
                     <h1>Produtos em Destaque</h1>
