@@ -8,6 +8,7 @@ interface MyOrder {
     orderPrice: number;
     userOrder: User | null;
     cartBuybutton: boolean;
+    
 }
 
 const CartContext = createContext<MyOrder>({} as MyOrder);
@@ -34,7 +35,7 @@ export const CartProvider: React.FC = ({ children }) => {
 
 
 return(
-    <CartContext.Provider value={{cartBuybutton: true, orderProducts, orderPrice: 0, userOrder}}>
+    <CartContext.Provider value={{cartBuybutton: true, orderProducts, orderPrice, userOrder}}>
         { children }
     </CartContext.Provider>
 )};
