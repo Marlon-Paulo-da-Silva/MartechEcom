@@ -1,6 +1,6 @@
 import CartItem from './CartItem';
 import { CartItemType } from '../pages/Home';
-import CartContext from '../contexts/cartContext';
+import {useCart} from '../contexts/cartContext';
 import { useContext } from 'react';
 import  {User}  from  '../contexts/authContext';
 
@@ -19,7 +19,9 @@ type MyOrder = {
 const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
     const calculateTotal = (items: CartItemType[]) => items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
 
-    const {signed} = useContext(CartContext);
+    const {orderPrice, orderProducts, userOrder} = useCart();
+
+    console.log('carrinho iniciado com sucesso ', orderProducts);
 
     return (
         <div>
