@@ -2,7 +2,7 @@ import React from "react";
 import { useContext, useState} from "react";
 import {useQuery} from 'react-query';
 
-import AuthContext from "../contexts/authContext";
+import {useAuth} from "../contexts/authContext";
 
 import { Cartbutton } from "../Component/Cartbutton";
 import  CartItem  from "../Component/CartItem";
@@ -43,7 +43,7 @@ type Products = {
 }
 
 export function Home() {
-    const {signed, signOut} = useContext(AuthContext);
+    const {signed, signOut, user} = useAuth();
 
 
     const [cartOpen, setCartOpen] = useState(false);
@@ -94,7 +94,7 @@ export function Home() {
     return ( 
         <div>
             
-            {signed  ? <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Minha Conta</button></Link>  : <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Login</button></Link>}
+            {signed  ? <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Minha Conta {user?.name}</button></Link>  : <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Login</button></Link>}
             {signed  ? <Link to="/"><button className="login" onClick={handleSignOut}> <i className='bx bxs-user-circle'></i> Sair</button></Link>  : <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Cadastrar</button></Link>}
             
             <section className="section destaque">

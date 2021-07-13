@@ -1,10 +1,15 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import * as auth from '../services/auth';
 import api from '../Data/apijwt';
 
+interface User {
+  name: string;
+  email: string;
+}
+
 interface AuthContextdata {
   signed: boolean;
-  user: object | null;
+  user: User | null;
   signIn(): Promise<void>;
   signOut: () => void;
 }
@@ -13,7 +18,7 @@ const AuthContext = createContext<AuthContextdata>({} as AuthContextdata);
 
 export const AuthProvider: React.FC = ({ children }) => {
 
-  const [user, setUser] = useState<object | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
 
   useEffect(() => {
@@ -54,4 +59,8 @@ export const AuthProvider: React.FC = ({ children }) => {
   )};
 
 
-export default AuthContext;
+export function useAuth() {
+  const context = useContext(AuthContext);  
+
+  return context;
+}

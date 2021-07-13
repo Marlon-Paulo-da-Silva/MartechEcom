@@ -1,14 +1,14 @@
 import { useState, useContext } from 'react';
 import {Link, useHistory} from 'react-router-dom';
 
-import AuthContext from '../contexts/authContext';
+import {useAuth} from '../contexts/authContext';
 
 import googleIconImg from '../assets/images/google-icon.svg';
 
 
 export function Signinlogin() {
 
-  const {signed, signIn, user} = useContext(AuthContext);
+  const {signed, signIn, user} = useAuth();
 
   console.log('contexto na singinlogin', signed);
   console.log('contexto na singinlogin', user);
