@@ -43,7 +43,7 @@ type Products = {
 }
 
 export function Home() {
-    const {signed} = useContext(AuthContext);
+    const {signed, signOut} = useContext(AuthContext);
 
     
 
@@ -84,12 +84,20 @@ export function Home() {
             }, [] as CartItemType[])
         ))
     );
+
+    function handleSignOut(){
+        signOut();
+    }
+
+    
+    
     
 
     return ( 
         <div>
-
-            {signed  ? <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Minha Conta</button></Link> : <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Entrar no sistema</button></Link>}
+            
+            {signed  ? <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Minha Conta</button></Link>  : <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Login</button></Link>}
+            {signed  ? <Link to="/"><button className="login" onClick={handleSignOut}> <i className='bx bxs-user-circle'></i> Sair</button></Link>  : <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Cadastrar</button></Link>}
             
             <section className="section destaque">
                 <div className="titulo">
