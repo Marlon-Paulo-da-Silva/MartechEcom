@@ -4,7 +4,6 @@ import {useQuery} from 'react-query';
 
 import {useAuth} from "../contexts/authContext";
 
-import { Cartbutton } from "../Component/Cartbutton";
 import  CartItem  from "../Component/CartItem";
 import { Item } from "../Component/Item";
 import Cart from "../Component/Cart";

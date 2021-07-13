@@ -2,7 +2,6 @@ import { createContext, useState } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Home } from "./pages/Home";
 import { Signinlogin } from './pages/Signinlogin';
-import {AppProvider} from './context/cartContext';
 import {AuthProvider} from './contexts/authContext';
 
 
