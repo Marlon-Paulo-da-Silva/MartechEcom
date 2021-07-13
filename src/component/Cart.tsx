@@ -19,7 +19,7 @@ type MyOrder = {
 const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
     const calculateTotal = (items: CartItemType[]) => items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
 
-    const {signed} = useContext(CartContext);
+    const {cartBuybutton} = useContext(CartContext);
 
     return (
         <div>
