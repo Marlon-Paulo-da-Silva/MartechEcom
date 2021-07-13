@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useState} from 'react';
+import React, {createContext, useContext, useEffect, useState} from 'react';
 import { CartItemType } from '../pages/Home';
 import { User } from './authContext';
 
@@ -16,11 +16,22 @@ interface MyOrderData {
 const CartContext = createContext<MyOrderData>({} as MyOrderData);
 
 export const CartProvider: React.FC = ({ children }) => {
-    const {user} = useAuth();
-
+    
     const [userOrder, setUserOrder] = useState<User | null>(null);
+    const {user} = useAuth();
+    setUserOrder(null);
 
-    setUserOrder(user);
+    
+
+    useEffect(() => {
+        
+
+        setUserOrder(user);
+
+    }, [!!user])
+    
+
+    
     
     
     

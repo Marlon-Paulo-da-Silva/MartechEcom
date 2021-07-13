@@ -3,6 +3,7 @@ import { CartItemType } from '../pages/Home';
 import {useCart} from '../contexts/cartContext';
 import { useContext } from 'react';
 import  {User}  from  '../contexts/authContext';
+import '../styles/cart.scss';
 
 type Props = {
     cartItems: CartItemType[];

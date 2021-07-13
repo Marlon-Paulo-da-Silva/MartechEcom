@@ -4,6 +4,7 @@ import {Link, useHistory} from 'react-router-dom';
 import {useAuth} from '../contexts/authContext';
 
 import googleIconImg from '../assets/images/google-icon.svg';
+import '../styles/signinlogin.scss';
 
 
 export function Signinlogin() {

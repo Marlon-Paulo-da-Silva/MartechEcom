@@ -1,10 +1,8 @@
-import React from "react";
-import { useContext, useState} from "react";
+import { useState} from "react";
 import {useQuery} from 'react-query';
 
 import {useAuth} from "../contexts/authContext";
 
-import  CartItem  from "../Component/CartItem";
 import { Item } from "../Component/Item";
 import Cart from "../Component/Cart";
 
@@ -13,12 +11,10 @@ import Cart from "../Component/Cart";
 
 import Drawer from '@material-ui/core/Drawer';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import Grid from '@material-ui/core/Grid';
-import Badge from '@material-ui/core/Badge';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import { Link } from "react-router-dom";
 
+import Badge from '@material-ui/core/Badge';
+import { Link } from "react-router-dom";
+import '../styles/home.scss';
 
 
 export type CartItemType = {
