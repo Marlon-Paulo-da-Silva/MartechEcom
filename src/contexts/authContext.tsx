@@ -2,7 +2,7 @@ import { createContext, useState, useEffect, useContext } from 'react';
 import * as auth from '../services/auth';
 import api from '../Data/apijwt';
 
-interface User {
+export interface User {
   name: string;
   email: string;
 }

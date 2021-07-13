@@ -1,5 +1,8 @@
 import CartItem from './CartItem';
 import { CartItemType } from '../pages/Home';
+import CartContext from '../contexts/cartContext';
+import { useContext } from 'react';
+import  {User}  from  '../contexts/authContext';
 
 type Props = {
     cartItems: CartItemType[];
@@ -7,10 +10,16 @@ type Props = {
     removeFromCart: (id: number) => void;
 }
 
+type MyOrder = {
+    orderProducts: CartItemType[];
+    orderPrice: number;
+    user: User | null;
+}
+
 const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
     const calculateTotal = (items: CartItemType[]) => items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
 
-    
+    const {signed} = useContext(CartContext);
 
     return (
         <div>

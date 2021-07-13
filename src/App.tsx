@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { Home } from "./pages/Home";
 import { Signinlogin } from './pages/Signinlogin';
 import {AuthProvider} from './contexts/authContext';
+import {CartProvider} from './contexts/cartContext';
 
 
 
@@ -12,8 +13,10 @@ function App() {
 
     <BrowserRouter>
      <AuthProvider>
-      <Route path="/" exact component={Home}/>
-      <Route path="/signinlogin" component={Signinlogin}/>
+        <CartProvider>
+        <Route path="/" exact component={Home}/>
+        <Route path="/signinlogin" component={Signinlogin}/>
+        </CartProvider>
       </AuthProvider>
     </BrowserRouter>
     
