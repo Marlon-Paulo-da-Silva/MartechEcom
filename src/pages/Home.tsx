@@ -45,8 +45,6 @@ type Products = {
 export function Home() {
     const {signed, signOut} = useContext(AuthContext);
 
-    
-
 
     const [cartOpen, setCartOpen] = useState(false);
     const [cartItems, setCartItems] = useState([] as CartItemType[]);

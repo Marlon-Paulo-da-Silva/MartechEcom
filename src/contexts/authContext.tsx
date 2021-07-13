@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import * as auth from '../services/auth';
+import api from '../Data/apijwt';
 
 interface AuthContextdata {
   signed: boolean;
@@ -21,6 +22,8 @@ export const AuthProvider: React.FC = ({ children }) => {
       const storagedToken = await localStorage.getItem('@auth:token');
 
       if(storagedUser && storagedUser){
+        api.defaults.headers['Authorization'] = `Bearer ${storagedToken}`
+
         setUser(JSON.parse(storagedUser));
       }
     }
@@ -32,6 +35,8 @@ export const AuthProvider: React.FC = ({ children }) => {
    const response = await auth.SignIn();
    
    setUser(response.user);
+
+   api.defaults.headers['Authorization'] = `Bearer ${response.token}`
    
     console.log('dentro de contexto', response)
   }
