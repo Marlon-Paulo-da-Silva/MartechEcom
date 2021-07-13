@@ -1,6 +1,6 @@
 import CartItem from './CartItem';
 import { CartItemType } from '../pages/Home';
-import CartContext from '../contexts/cartContext';
+import {useCart} from '../contexts/cartContext';
 import { useContext } from 'react';
 import  {User}  from  '../contexts/authContext';
 
@@ -17,7 +17,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
 
     }
 
-    const {cartBuybutton} = useContext(CartContext);
+    const {cartBuybutton} = useCart();
 
     return (
         <div>

@@ -1,4 +1,4 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, useContext, useState} from 'react';
 import { useAuth } from './authContext';
 import {User} from '../contexts/authContext';
 import { CartItemType } from '../pages/Home';
@@ -21,6 +21,7 @@ export const CartProvider: React.FC = ({ children }) => {
 
    
     function initiateBuy(items: CartItemType[], orderPrice: number){
+
         setUserOrder(user);
         setOrderProducts(items)
         setOrderPrice(orderPrice)
@@ -38,4 +39,8 @@ return(
     </CartContext.Provider>
 )};
 
-export default CartContext;
+export function useCart() {
+  const context = useContext(CartContext);  
+
+  return context;
+}
