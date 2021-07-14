@@ -18,6 +18,8 @@ const AuthContext = createContext<AuthContextdata>({} as AuthContextdata);
 
 export const AuthProvider: React.FC = ({ children }) => {
 
+  
+
   const [user, setUser] = useState<User | null>(null);
 
 
@@ -36,14 +38,13 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   async function signIn() {
 
-    
    const response = await auth.SignIn();
    
    setUser(response.user);
 
    api.defaults.headers['Authorization'] = `Bearer ${response.token}`
    
-    console.log('dentro de contexto', response)
+    console.log('dentro de contexto auth', response)
   }
 
   function signOut(){

@@ -15,6 +15,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Badge from '@material-ui/core/Badge';
 import { Link } from "react-router-dom";
 import '../styles/home.scss';
+import '../styles/cartbutton.scss';
 
 
 export type CartItemType = {
@@ -22,6 +23,7 @@ export type CartItemType = {
   name: string;
   image: string;
   price: number;
+  numReviews: number;
   amount: number;
   totalproduct: number;
 }

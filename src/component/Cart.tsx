@@ -1,7 +1,7 @@
 import CartItem from './CartItem';
 import { CartItemType } from '../pages/Home';
 import {useCart} from '../contexts/cartContext';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import  {User}  from  '../contexts/authContext';
 import '../styles/cart.scss';
 
@@ -11,16 +11,28 @@ type Props = {
     removeFromCart: (id: number) => void;
 }
 
-type MyOrder = {
-    orderProducts: CartItemType[];
-    orderPrice: number;
-    user: User | null;
-}
-
 const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
     const calculateTotal = (items: CartItemType[]) => items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
+    const calcTotal = calculateTotal(cartItems);
+    
+    const {orderPrice, orderProducts, userOrder, cartBuybutton, initiateBuy} = useCart();
+    const [buyItens, setBuyItens] = useState([] as CartItemType[]);
+    const [totalItens, setTotalItens] = useState<number>(0);
 
-    const {orderPrice, orderProducts, userOrder} = useCart();
+    
+    function initiateBuyCart(){
+        
+
+        
+        setBuyItens(cartItems);
+        setTotalItens(calcTotal);
+
+        initiateBuy(cartItems, totalItens);
+        
+        console.log('Context cartContext dentro Cart ', orderProducts, orderPrice);
+
+    }
+
 
     console.log('carrinho iniciado com sucesso ', orderProducts);
 
@@ -39,6 +51,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
             ))}
             <h2>Total: R${calculateTotal(cartItems).toFixed(2)}</h2>
             </div>
+            <button className="login" onClick={initiateBuyCart}> <i className='bx bxs-user-circle'></i> Comprar</button>
         </div>
     )
 };

@@ -1,49 +1,48 @@
-import React, {createContext, useContext, useEffect, useState} from 'react';
+
+import React, {createContext, useContext, useState} from 'react';
+import { useAuth } from './authContext';
+import {User} from '../contexts/authContext';
 import { CartItemType } from '../pages/Home';
-import { User } from './authContext';
 
-import {useAuth} from '../contexts/authContext';
-
-interface MyOrderData {
-    orderProducts: object;
+interface MyOrder {
+    orderProducts: CartItemType[] | null;
     orderPrice: number;
     userOrder: User | null;
+    cartBuybutton: boolean;
+    initiateBuy: (items: CartItemType[], orderPrice: number) => void;
 }
 
-
-
-
-const CartContext = createContext<MyOrderData>({} as MyOrderData);
+const CartContext = createContext<MyOrder>({} as MyOrder);
 
 export const CartProvider: React.FC = ({ children }) => {
-    
+
+    const {signed, signIn, user} = useAuth();
     const [userOrder, setUserOrder] = useState<User | null>(null);
-    const {user} = useAuth();
-    setUserOrder(null);
+    const [orderPrice, setOrderPrice] = useState<number>(0);
+    const [orderProducts, setOrderProducts] = useState<CartItemType[]>({} as CartItemType[]);
 
-    
-
-    useEffect(() => {
-        
+   
+    function initiateBuy(items: CartItemType[], orderPrice: number){
 
         setUserOrder(user);
+        setOrderProducts(items)
+        setOrderPrice(orderPrice)
 
-    }, [!!user])
-    
 
-    
-    
-    
-    
-    
-    return (
-    <CartContext.Provider value={{orderProducts: {}, orderPrice: 0, userOrder}}>
+       
+        
+        console.log("log dentro do Cartcontext", userOrder, orderProducts, orderPrice );
+    }
+
+
+return(
+    <CartContext.Provider value={{cartBuybutton: true, orderProducts, orderPrice, userOrder, initiateBuy: (items: CartItemType[], orderPrice: number) => {}}}>
         { children }
     </CartContext.Provider>
 )};
 
 export function useCart() {
-    const context = useContext(CartContext);  
-  
-    return context;
-  }
+  const context = useContext(CartContext);  
+
+  return context;
+}
