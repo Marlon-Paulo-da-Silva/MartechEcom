@@ -10,6 +10,7 @@ interface MyOrder {
     userOrder: User | null;
     cartBuybutton: boolean;
     initiateBuy: (items: CartItemType[], orderPrice: number) => void;
+    
 }
 
 const CartContext = createContext<MyOrder>({} as MyOrder);

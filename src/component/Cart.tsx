@@ -21,9 +21,6 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
 
     
     function initiateBuyCart(){
-        
-
-        
         setBuyItens(cartItems);
         setTotalItens(calcTotal);
 
