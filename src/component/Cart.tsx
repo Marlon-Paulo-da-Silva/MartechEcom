@@ -24,7 +24,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
         setBuyItens(cartItems);
         setTotalItens(calcTotal);
 
-        initiateBuy(cartItems, totalItens);
+        initiateBuy();
         
         console.log('Context cartContext dentro Cart ', orderProducts, orderPrice);
 
