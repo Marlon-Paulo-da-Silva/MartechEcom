@@ -9,7 +9,7 @@ interface MyOrder {
     orderPrice: number;
     userOrder: User | null;
     cartBuybutton: boolean;
-    initiateBuy: () => void;
+    initiateBuy: (product: CartItemType[], totalPrice: number) => void;
     
 }
 
@@ -23,11 +23,12 @@ export const CartProvider: React.FC = ({ children }) => {
     const [orderProducts, setOrderProducts] = useState<CartItemType[]>({} as CartItemType[]);
 
    
-    function initiateBuy(){
+    const initiateBuy = (product: CartItemType[], totalPrice: number) => {
 
         setUserOrder(user);
-        // setOrderProducts(items)
-        setOrderPrice(orderPrice)
+        setOrderProducts(product)
+        setOrderPrice(totalPrice)
+        
 
 
        

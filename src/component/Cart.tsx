@@ -20,13 +20,14 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
     const [totalItens, setTotalItens] = useState<number>(0);
 
     
-    function initiateBuyCart(){
-        setBuyItens(cartItems);
-        setTotalItens(calcTotal);
+    function initiateBuyCart(items: CartItemType[],calculTotal: number){
+        setBuyItens(items);
+        setTotalItens(calculTotal);
 
-        initiateBuy();
+        initiateBuy(items, calculTotal);
         
         console.log('Context cartContext dentro Cart ', orderProducts, orderPrice);
+        console.log('UseState cartContext dentro Cart ', buyItens, totalItens);
 
     }
 
@@ -48,7 +49,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
             ))}
             <h2>Total: R${calculateTotal(cartItems).toFixed(2)}</h2>
             </div>
-            <button className="login" onClick={initiateBuyCart}> <i className='bx bxs-user-circle'></i> Comprar</button>
+            <button className="login" onClick={() => initiateBuyCart(cartItems, calcTotal)}> <i className='bx bxs-user-circle'></i> Comprar</button>
         </div>
     )
 };
