@@ -1,5 +1,5 @@
 
-import React, {createContext, useContext, useState} from 'react';
+import React, {createContext, useContext, useEffect, useState} from 'react';
 import { useAuth } from './authContext';
 import {User} from '../contexts/authContext';
 import { CartItemType } from '../pages/Home';
@@ -22,6 +22,16 @@ export const CartProvider: React.FC = ({ children }) => {
     const [orderPrice, setOrderPrice] = useState<number>(0);
     const [orderProducts, setOrderProducts] = useState<CartItemType[]>({} as CartItemType[]);
 
+    useEffect(() => {
+    async function loadStorageCart(){
+        const storagedCart = await localStorage.getItem('@MartechEcom:cart');
+  
+        if(storagedCart && storagedCart){
+            setOrderProducts(JSON.parse(storagedCart));
+        }
+      }
+    });
+
    
     const initiateBuy = (product: CartItemType[], totalPrice: number) => {
 
@@ -30,16 +40,15 @@ export const CartProvider: React.FC = ({ children }) => {
         setOrderPrice(totalPrice)
         console.log(orderProducts, setOrderPrice);
         
-        localStorage.setItem('@MartechEcom:cart', JSON.stringify([orderProducts, {orderPrice}]));
-
-       
-        
+        localStorage.setItem('@MartechEcom:cart', JSON.stringify(orderProducts));
+        localStorage.setItem('@MartechEcom:totalprice', JSON.stringify(orderPrice));
         console.log("log dentro do Cartcontext", userOrder, orderProducts, orderPrice );
+       
     }
 
 
 return(
-    <CartContext.Provider value={{cartBuybutton: true, orderProducts, orderPrice, userOrder, initiateBuy}}>
+    <CartContext.Provider value={{cartBuybutton: !!orderProducts, orderProducts, orderPrice, userOrder, initiateBuy}}>
         { children }:
     </CartContext.Provider>
 )};

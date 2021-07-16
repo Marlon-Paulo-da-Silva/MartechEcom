@@ -1,8 +1,26 @@
+import { useEffect, useState } from 'react';
+import {useCart} from '../contexts/cartContext';
+import { CartItemType } from '../pages/Home';
+
 import '../styles/myorder.scss';
+
 
 
 export function MyOrder() {
 
+    const {orderPrice, orderProducts, userOrder, cartBuybutton, initiateBuy} = useCart();
+    const [orderProductsCheckout, setOrderProductsCheckout] = useState([] as CartItemType[]);
+
+    useEffect(() => {
+       if(cartBuybutton)
+       {
+            
+           console.log('order products dentro da página de carrinho dentro do useEffect')
+       }
+
+       console.log('order products dentro da página de carrinho fora do useeffect');
+       console.log('Context cartContext dentro Myorder ', orderProducts, orderPrice);
+      }, []);
 
     return(
         <>
@@ -10,34 +28,21 @@ export function MyOrder() {
               <h1 className="title-container">Carrinho de Compra</h1>
               <div className="itens-container">
                 <div className="block-itens">
-                    <div className="block-item">
+                    {orderProducts?.length === 0 ? <p>Sem itens no carrinho</p> : null}
+                    {orderProducts?.map(product => (
+                        <div className="block-item">
 
                         <div className="description-item">
                         
-                            <img className="img-carrinho" src="https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/10.png" alt="imagemitem" />
+                            <img className="img-carrinho" src={product.image} alt="imagemitem" />
                             <div className="about-item">
-                                <span>Name: Tenis Nike</span>
-                                <span>Preço: 29.99</span>
+                                <span>Name: {product.name}</span>
+                                <span>Preço: {product.price}</span>
                             </div>
                         </div>
-                        <div className="qtde-item">Quantidade: 3</div>
+                        <div className="qtde-item">{product.amount}</div>
                     </div>
-
-                     <div className="block-item">
-
-                        <div className="description-item">
-                        
-                            <img className="img-carrinho" src="https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/10.png" alt="imagemitem" />
-                            <div className="about-item">
-                                <span>Nome: Tenis Nike</span>
-                                <span>Preço: 29.99</span>
-                            </div>
-                        </div>
-                        <div>
-                        <div className="qtde-item">Quantidade: 3</div>
-                        <div className="qtde-price">Total: 3</div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
                 <div className="final-order">
                 <div className="qtde-total">Valor total: 6767,00</div>

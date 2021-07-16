@@ -1,4 +1,5 @@
 import CartItem from './CartItem';
+import { useHistory } from "react-router-dom";
 import { CartItemType } from '../pages/Home';
 import {useCart} from '../contexts/cartContext';
 import { useContext, useState } from 'react';
@@ -13,7 +14,8 @@ type Props = {
 
 const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
     const calculateTotal = (items: CartItemType[]) => items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
-    
+    let history = useHistory();
+
     const calcTotal = calculateTotal(cartItems);
     
     const {orderPrice, orderProducts, userOrder, cartBuybutton, initiateBuy} = useCart();
@@ -22,6 +24,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
 
     
     function initiateBuyCart(items: CartItemType[],calculTotal: number){
+        
         setBuyItens(items);
         setTotalItens(calculTotal);
 
@@ -29,7 +32,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
         
         console.log('Context cartContext dentro Cart ', orderProducts, orderPrice);
         console.log('UseState cartContext dentro Cart ', buyItens, totalItens);
-
+        history.push("/myorder");
     }
 
 
