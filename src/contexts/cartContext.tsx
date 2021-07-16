@@ -29,8 +29,8 @@ export const CartProvider: React.FC = ({ children }) => {
         setOrderProducts(product)
         setOrderPrice(totalPrice)
         console.log(orderProducts, setOrderPrice);
-        localStorage.setItem('@Martech:cart', JSON.stringify({orderProducts, setOrderPrice}))
         
+        localStorage.setItem('@MartechEcom:cart', JSON.stringify([orderProducts, {orderPrice}]));
 
        
         
