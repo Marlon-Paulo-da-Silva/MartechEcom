@@ -16,6 +16,7 @@ import Badge from '@material-ui/core/Badge';
 import { Link } from "react-router-dom";
 import '../styles/home.scss';
 import '../styles/cartbutton.scss';
+import { useCart } from "../contexts/cartContext";
 
 
 export type CartItemType = {
@@ -48,7 +49,9 @@ export function Home() {
 
 
     const {data, isLoading, error} = useQuery<CartItemType[]>('products', getProducts);
+    
 
+    const {orderPrice, orderProducts, userOrder, cartBuybutton, initiateBuy} = useCart();
 
 
     const getTotalItems = (items: CartItemType[]) => items.reduce((ack: number, items) => ack + items.amount, 0);
