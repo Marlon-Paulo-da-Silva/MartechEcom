@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {useCart} from '../contexts/cartContext';
 import { CartItemType } from '../pages/Home';
 
@@ -22,6 +23,7 @@ export function MyOrder() {
 
     return(
         <>
+        <Link to="/"><button className="back"> <i className='bx bx-arrow-back' /> Voltar</button></Link>
           <div className="geral-container">
               <h1 className="title-container">Carrinho de Compra</h1>
               <div className="itens-container">
