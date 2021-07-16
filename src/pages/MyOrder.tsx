@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {useCart} from '../contexts/cartContext';
 import { CartItemType } from '../pages/Home';
 
@@ -9,12 +9,10 @@ import '../styles/myorder.scss';
 export function MyOrder() {
 
     const {orderPrice, orderProducts, userOrder, cartBuybutton, initiateBuy} = useCart();
-    const [orderProductsCheckout, setOrderProductsCheckout] = useState([] as CartItemType[]);
 
     useEffect(() => {
        if(cartBuybutton)
        {
-            
            console.log('order products dentro da página de carrinho dentro do useEffect')
        }
 
@@ -45,7 +43,7 @@ export function MyOrder() {
                     ))}
                 </div>
                 <div className="final-order">
-                <div className="qtde-total">Valor total: 6767,00</div>
+                <div className="qtde-total">Valor total: {orderPrice}</div>
                 <button className="final-order-button">Finalizar Pedido</button>
                 </div>
               </div>
