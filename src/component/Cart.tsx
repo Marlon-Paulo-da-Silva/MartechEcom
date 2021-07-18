@@ -10,11 +10,13 @@ type Props = {
     cartItems: CartItemType[];
     addToCart: (clickedItem: CartItemType) => void;
     removeFromCart: (id: number) => void;
+    showCartPopup: boolean;
+    setShowCartPopup: (showCartPopup: boolean) => void;
 }
 
 
 
-const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
+const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart, showCartPopup,  setShowCartPopup}) => {
     const calculateTotal = (items: CartItemType[]) => items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
     let history = useHistory();
 
@@ -27,7 +29,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
     useEffect(() => {
         
         console.log('testando caritens que vai para o Cart.tsx', cartItems);
-    }, [cartItems])
+    }, [])
     
     function initiateBuyCart(items: CartItemType[],calculTotal: number){
         
@@ -45,10 +47,15 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
     console.log('carrinho iniciado com sucesso ', orderProducts);
 
     return (
-        <div>
-            <h2>Seu Carrinho de Compras</h2>
+            <>
+            {showCartPopup ? 
+            <div className="popupContainer">            
+            <h2 className="cartItems-title">Carrinho de Compras</h2>
+            {cartItems.length === 0 ?
+            <p className="cartItems-title">Sem itens no carrinho</p> 
+            : 
+            <>
             <div className="cart">
-            {cartItems.length === 0 ? <p>Sem itens no carrinho</p> : null}
             {cartItems.map(item  => (
                 <CartItem 
                     key={item._id}
@@ -57,10 +64,15 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
                     removeFromCart={removeFromCart}
                 />
             ))}
-            <h2>Total: R${calculateTotal(cartItems)}</h2>
             </div>
-            <button className="login" onClick={() => initiateBuyCart(cartItems, calcTotal)}> <i className='bx bxs-user-circle'></i> Comprar</button>
-        </div>
+            <div className="cartItem-order">
+                <div className="cartItems-total">Valor total: R${calculateTotal(cartItems).toFixed(2)}</div>
+                <button className="final-cartItems-button" onClick={() => initiateBuyCart(cartItems, calcTotal)}>Finalizar Pedido</button>
+            </div>
+            </>}
+            </div>
+            : null}
+            </>
     )
 };
 

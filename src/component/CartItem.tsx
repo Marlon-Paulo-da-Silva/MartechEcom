@@ -17,7 +17,9 @@ type TotalOrder = {
 
 
 const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
-  <div className="cartItem">
+  <div>
+    <div className="cartItem-container">
+      {/* <img src={item.image} alt={item.name} />
     <h3>{item.name}</h3>
     <div className="information">
       <p>Preço: ${item.price}</p>
@@ -41,8 +43,44 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
         >
           +
         </Button>
+    </div> */}
+      <div className="block-cartItem">                    
+              <div className="block-cartItem">
+
+              <div className="description-cartItem">
+              
+                  <img className="img-cartItem" src={item.image} alt="imagemitem" />
+                  <div className="about-cartItem">
+                      <span>{item.name}</span>
+                      <span>Preço: {item.price}</span>
+                  </div>
+              </div>
+              
+          </div>
+          <div className="buttons-cartItem">
+          <Button
+                size='small'
+                disableElevation
+                variant='contained'
+                onClick={() => addToCart(item)}
+              >
+                +
+              </Button>
+              <p>{item.amount}</p>
+              <Button
+                size='small'
+                disableElevation
+                variant='contained'
+                onClick={() => removeFromCart(item._id)}
+              >
+                -
+          </Button>
+        </div>
+      </div>
+      
+      
     </div>
-    <img src={item.image} alt={item.name} />
+    
   </div>
 );
 

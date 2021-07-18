@@ -14,12 +14,15 @@ export function MyOrder() {
     useEffect(() => {
        if(cartBuybutton)
        {
-           console.log('order products dentro da página de carrinho dentro do useEffect')
+           console.log('order products dentro da página de carrinho dentro do useEffect0 com true')
        }
 
        console.log('order products dentro da página de carrinho fora do useeffect');
        console.log('Context cartContext dentro Myorder ', orderProducts, orderPrice);
+       console.log('tamanho do orderproducts ', orderProducts?.length)
+
       }, []);
+
 
     return(
         <>

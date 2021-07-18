@@ -5,6 +5,7 @@ import {useAuth} from "../contexts/authContext";
 
 import { Item } from "../Component/Item";
 import Cart from "../Component/Cart";
+import CartPopup from "../Component/CartPopup";
 
 
 
@@ -56,17 +57,22 @@ export function Home() {
 
 
     useEffect(() => {
-        window.addEventListener('focus', () => {
-            setCartItems(orderProducts => {
-                return [...orderProducts];
-            });
+        setCartItems(orderProducts => {
+       
+            
+            setCartItemsWithContext([...orderProducts]);
+            console.log('contexto na Home dentro do addToCart', orderProducts);
+            console.log('useState da Home dentro do addToCart', cartItemsWithContext);
+            console.log('CartItens da Home dentro do addToCart', cartItems);
 
+            return [...orderProducts];
         });
 
-        console.log('Olá, andressa, eu te amo ' );
+
+        console.log('Itens do CartItem dentro do Home e UseEffect ', cartItems );
 
         
-    }, []);
+    }, [orderProducts]);
 
 
     const getTotalItems = (items: CartItemType[]) => items.reduce((ack: number, items) => ack + items.amount, 0);
@@ -113,7 +119,11 @@ export function Home() {
         signOut();
     }
 
-    
+    const [showCartPopup, setShowCartPopup] = useState(false);
+
+    const openShowCartPopup = () => {
+        setShowCartPopup(prev => !prev);
+    }
     
     
 
@@ -128,6 +138,15 @@ export function Home() {
                     <h1>Produtos em Destaque</h1>
                 </div>
                 <div className="DrawerStyle">
+                        <Cart 
+                            showCartPopup={showCartPopup}
+                            setShowCartPopup={setShowCartPopup}
+                            cartItems={cartItems} 
+                            addToCart={handleAddToCart}
+                            removeFromCart={handleRemoveFromCart}  />
+                    
+                </div>
+                {/* <div className="DrawerStyle">
                     <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
                         
                         <Cart 
@@ -135,12 +154,16 @@ export function Home() {
                             addToCart={handleAddToCart}
                             removeFromCart={handleRemoveFromCart}  />
                     </Drawer>
-                </div>
+                </div> */}
                 
-                <div className="IconButtonStyle" onClick={() => setCartOpen(true)}>
+                <div className="IconButtonStyle" onClick={openShowCartPopup}>
                     <Badge badgeContent={getTotalItems(cartItems)} color='error' />
                     <ShoppingCartIcon />
                 </div>
+                {/* <div className="IconButtonStyle" onClick={() => setCartOpen(true)}>
+                    <Badge badgeContent={getTotalItems(cartItems)} color='error' />
+                    <ShoppingCartIcon />
+                </div> */}
 
                 
                 <div className="container">
