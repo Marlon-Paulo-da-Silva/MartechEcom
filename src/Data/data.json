@@ -1,7 +1,7 @@
 [
   {
      "_id":1,
-     "name":"Tenis Nike",
+     "name":"Tenis Modelo Andressa",
      "image":"https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/1.png",
      "price":89.99,
      "rating":4.5,
@@ -10,7 +10,7 @@
   },
   {
      "_id":2,
-     "name":"Tenis Nike",
+     "name":"Tenis Nike Air Max",
      "image":"https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/2.png",
      "price":599.99,
      "rating":4.0,

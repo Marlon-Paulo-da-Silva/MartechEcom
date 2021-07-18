@@ -2,7 +2,7 @@ import CartItem from './CartItem';
 import { useHistory } from "react-router-dom";
 import { CartItemType } from '../pages/Home';
 import {useCart} from '../contexts/cartContext';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import  {User}  from  '../contexts/authContext';
 import '../styles/cart.scss';
 
@@ -11,6 +11,8 @@ type Props = {
     addToCart: (clickedItem: CartItemType) => void;
     removeFromCart: (id: number) => void;
 }
+
+
 
 const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
     const calculateTotal = (items: CartItemType[]) => items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
@@ -22,6 +24,10 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart}) => {
     const [buyItens, setBuyItens] = useState([] as CartItemType[]);
     const [totalItens, setTotalItens] = useState<number>(0);
 
+    useEffect(() => {
+        
+        console.log('testando caritens que vai para o Cart.tsx', cartItems);
+    }, [cartItems])
     
     function initiateBuyCart(items: CartItemType[],calculTotal: number){
         

@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useEffect, useState} from "react";
 import {useQuery} from 'react-query';
 
 import {useAuth} from "../contexts/authContext";
@@ -46,6 +46,7 @@ export function Home() {
 
     const [cartOpen, setCartOpen] = useState(false);
     const [cartItems, setCartItems] = useState([] as CartItemType[]);
+    const [cartItemsWithContext, setCartItemsWithContext] = useState([] as CartItemType[]);
 
 
     const {data, isLoading, error} = useQuery<CartItemType[]>('products', getProducts);
@@ -54,21 +55,46 @@ export function Home() {
     const {orderPrice, orderProducts, userOrder, cartBuybutton, initiateBuy} = useCart();
 
 
+    useEffect(() => {
+        window.addEventListener('focus', () => {
+            setCartItems(orderProducts => {
+                return [...orderProducts];
+            });
+
+        });
+
+        console.log('Olá, andressa, eu te amo ' );
+
+        
+    }, []);
+
+
     const getTotalItems = (items: CartItemType[]) => items.reduce((ack: number, items) => ack + items.amount, 0);
 
-    const handleAddToCart = (clickedItem: CartItemType) => (
-        setCartItems(prev => {
-            const isItemCart = prev.find(item => item._id === clickedItem._id )
+    const handleAddToCart = (clickedItem: CartItemType) => {
+
+        
+        
+        setCartItems(orderProducts => {
+            const isItemCart = orderProducts.find(item => item._id === clickedItem._id )
         
         
             if(isItemCart) {
-                return prev.map(item => (item._id === clickedItem._id ?
+                return orderProducts.map(item => (item._id === clickedItem._id ?
                     {...item, amount: item.amount + 1} : item))
             }
+            setCartItemsWithContext([...orderProducts, {...clickedItem, amount: 1}]);
+            console.log('contexto na Home dentro do addToCart', orderProducts);
+            console.log('useState da Home dentro do addToCart', cartItemsWithContext);
+            console.log('CartItens da Home dentro do addToCart', cartItems);
 
-            return [...prev, {...clickedItem, amount: 1}];
-        })
-    );
+            return [...orderProducts, {...clickedItem, amount: 1}];
+        });
+
+        
+
+
+    }
 
     const handleRemoveFromCart = (id: number) => (
         setCartItems(prev => (

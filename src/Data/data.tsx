@@ -2,7 +2,7 @@
 const products = [
     {
       _id: "1",
-      name: "Tenis Nike",
+      name: "Tenis Modelo Andressa",
       image: "https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/assets/images/1.png",
   
       price: 89.99,
