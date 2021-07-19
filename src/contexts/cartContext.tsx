@@ -23,14 +23,19 @@ export const CartProvider: React.FC = ({ children }) => {
     const [orderProducts, setOrderProducts] = useState<CartItemType[]>({} as CartItemType[]);
 
     useEffect(() => {
-    async function loadStorageCart(){
-        const storagedCart = await localStorage.getItem('@MartechEcom:cart');
-  
-        if(storagedCart && storagedCart){
-            setOrderProducts(JSON.parse(storagedCart));
-        }
-      }
-    });
+
+        setOrderProducts(() => {
+
+            const storagedCart = localStorage.getItem('@MartechEcom:cart')
+           
+            if(storagedCart && storagedCart){
+                return JSON.parse(storagedCart);
+            }
+
+            return [];
+
+        });
+    }, [])
 
    
     const initiateBuy = (product: CartItemType[], totalPrice: number) => {
