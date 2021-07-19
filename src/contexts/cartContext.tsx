@@ -10,6 +10,7 @@ interface MyOrder {
     userOrder: User | null;
     cartBuybutton: boolean;
     initiateBuy: (product: CartItemType[], totalPrice: number) => void;
+    addProduct: (product: CartItemType) => void;
     
 }
 
@@ -38,6 +39,9 @@ export const CartProvider: React.FC = ({ children }) => {
     }, [])
 
    
+    const addProduct = (product: CartItemType) => {
+        setOrderProducts([...orderProducts, product]);
+    }
     const initiateBuy = (product: CartItemType[], totalPrice: number) => {
 
         setUserOrder(user);
@@ -51,8 +55,10 @@ export const CartProvider: React.FC = ({ children }) => {
     }
 
 
+
+
 return(
-    <CartContext.Provider value={{cartBuybutton: !!orderProducts, orderProducts, orderPrice, userOrder, initiateBuy}}>
+    <CartContext.Provider value={{cartBuybutton: !!orderProducts, orderProducts, orderPrice, userOrder, initiateBuy, addProduct}}>
         { children }:
     </CartContext.Provider>
 )};

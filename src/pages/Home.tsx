@@ -53,7 +53,7 @@ export function Home() {
     const {data, isLoading, error} = useQuery<CartItemType[]>('products', getProducts);
     
 
-    const {orderPrice, orderProducts, userOrder, cartBuybutton, initiateBuy} = useCart();
+    const {orderPrice, orderProducts, userOrder, cartBuybutton, initiateBuy, addProduct} = useCart();
 
 
     useEffect(() => {
@@ -78,13 +78,15 @@ export function Home() {
     const getTotalItems = (items: CartItemType[]) => items.reduce((ack: number, items) => ack + items.amount, 0);
 
     const handleAddToCart = (clickedItem: CartItemType) => {
+        console.log('context ANTES Do addProduct dentro do handle', orderProducts);
 
-        
+        addProduct(clickedItem);
+        console.log('context após o addProduct dentro do handle', orderProducts);
         
         setCartItems(orderProducts => {
             const isItemCart = orderProducts.find(item => item._id === clickedItem._id )
         
-        
+            
             if(isItemCart) {
                 return orderProducts.map(item => (item._id === clickedItem._id ?
                     {...item, amount: item.amount + 1} : item))
