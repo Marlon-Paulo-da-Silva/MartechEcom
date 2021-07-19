@@ -17,7 +17,16 @@ type Props = {
 
 
 const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart, showCartPopup,  setShowCartPopup}) => {
+    const [totalCartItens, setTotalCartItens] = useState<number>(0);
+
     // const calculateTotal = (items: CartItemType[]) => items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
+   
+    // for (let cartIs in cartItem){
+    //     console.log(cartIs[price]);
+    //   }
+
+    
+    console.log('Total do carrinho: ', totalCartItens)
     let history = useHistory();
 
     // const calcTotal = calculateTotal(cartItems);

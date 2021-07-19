@@ -46,13 +46,27 @@ export const CartProvider: React.FC = ({ children }) => {
 
    
     const addProduct = (product: CartItemType) => {
-        setOrderProducts([...orderProducts, product]);
-       
+        // setOrderProducts([...orderProducts, product]);
 
+        
+            const isItemCart = orderProducts.find(item => item._id === product._id )
+        
+            
+            if(isItemCart) {
+                return orderProducts.map(item => (item._id === product._id ?
+                    {...orderProducts, amount: Number(item.amount )+ 1} : item))
+            }
+            console.log('contexto na Home dentro do addToCart', orderProducts);
+            
+
+            setOrderProducts( [...orderProducts, {...product, amount: 1}]);
+      
 
     }
     const initiateBuy = (product: CartItemType[], totalPrice: number) => {
 
+        if(signed) {
+            
         setUserOrder(user);
         setOrderProducts(product)
         setOrderPrice(totalPrice)
@@ -60,6 +74,10 @@ export const CartProvider: React.FC = ({ children }) => {
         localStorage.setItem('@MartechEcom:cart', JSON.stringify(orderProducts));
         localStorage.setItem('@MartechEcom:totalprice', JSON.stringify(orderPrice));
         console.log("log dentro do Cartcontext", userOrder, orderProducts, orderPrice );
+        } else {
+            alert('é necessário realizar o login')
+        }
+
        
     }
 
