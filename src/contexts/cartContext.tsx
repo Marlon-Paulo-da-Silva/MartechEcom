@@ -36,11 +36,20 @@ export const CartProvider: React.FC = ({ children }) => {
             return [];
 
         });
+
+        
+        
     }, [])
+
+    
+    
 
    
     const addProduct = (product: CartItemType) => {
         setOrderProducts([...orderProducts, product]);
+       
+
+
     }
     const initiateBuy = (product: CartItemType[], totalPrice: number) => {
 
@@ -54,7 +63,8 @@ export const CartProvider: React.FC = ({ children }) => {
        
     }
 
-
+        
+    
 
 
 return(

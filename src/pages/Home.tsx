@@ -58,16 +58,8 @@ export function Home() {
 
     useEffect(() => {
         setCartItems(orderProducts => {
-       
-            
-            setCartItemsWithContext([...orderProducts]);
-            console.log('contexto na Home dentro do addToCart', orderProducts);
-            console.log('useState da Home dentro do addToCart', cartItemsWithContext);
-            console.log('CartItens da Home dentro do addToCart', cartItems);
-
             return [...orderProducts];
         });
-
 
         console.log('Itens do CartItem dentro do Home e UseEffect ', cartItems );
 
@@ -75,33 +67,12 @@ export function Home() {
     }, []);
 
 
-    const getTotalItems = (items: CartItemType[]) => items.reduce((ack: number, items) => ack + items.amount, 0);
 
     const handleAddToCart = (clickedItem: CartItemType) => {
         console.log('context ANTES Do addProduct dentro do handle', orderProducts);
 
         addProduct(clickedItem);
         console.log('context após o addProduct dentro do handle', orderProducts);
-        
-        setCartItems(orderProducts => {
-            const isItemCart = orderProducts.find(item => item._id === clickedItem._id )
-        
-            
-            if(isItemCart) {
-                return orderProducts.map(item => (item._id === clickedItem._id ?
-                    {...item, amount: item.amount + 1} : item))
-            }
-            setCartItemsWithContext([...orderProducts, {...clickedItem, amount: 1}]);
-            console.log('contexto na Home dentro do addToCart', orderProducts);
-            console.log('useState da Home dentro do addToCart', cartItemsWithContext);
-            console.log('CartItens da Home dentro do addToCart', cartItems);
-
-            return [...orderProducts, {...clickedItem, amount: 1}];
-        });
-
-        
-
-
     }
 
     const handleRemoveFromCart = (id: number) => (
@@ -159,7 +130,8 @@ export function Home() {
                 </div> */}
                 
                 <div className="IconButtonStyle" onClick={openShowCartPopup}>
-                    <Badge badgeContent={getTotalItems(cartItems)} color='error' />
+                    <Badge badgeContent={orderProducts?.length} color='error' />
+                    {/* <Badge badgeContent={getTotalItems(cartItems)} color='error' /> */}
                     <ShoppingCartIcon />
                 </div>
                 {/* <div className="IconButtonStyle" onClick={() => setCartOpen(true)}>
