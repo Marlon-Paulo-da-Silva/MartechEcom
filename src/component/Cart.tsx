@@ -17,10 +17,10 @@ type Props = {
 
 
 const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart, showCartPopup,  setShowCartPopup}) => {
-    const calculateTotal = (items: CartItemType[]) => items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
+    // const calculateTotal = (items: CartItemType[]) => items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
     let history = useHistory();
 
-    const calcTotal = calculateTotal(cartItems);
+    // const calcTotal = calculateTotal(cartItems);
     
     const {orderPrice, orderProducts, userOrder, cartBuybutton, initiateBuy} = useCart();
     const [buyItens, setBuyItens] = useState([] as CartItemType[]);
@@ -66,8 +66,9 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart, showCartP
             ))}
             </div>
             <div className="cartItem-order">
-                <div className="cartItems-total">Valor total: R${calculateTotal(cartItems).toFixed(2)}</div>
-                <button className="final-cartItems-button" onClick={() => initiateBuyCart(cartItems, calcTotal)}>Finalizar Pedido</button>
+                {/* <div className="cartItems-total">Valor total: R${calculateTotal(cartItems).toFixed(2)}</div> */}
+                <div className="cartItems-total">Valor total: R$1000</div>
+                <button className="final-cartItems-button" onClick={() => initiateBuyCart(cartItems, 1000)}>Finalizar Pedido</button>
             </div>
             </>}
             </div>
