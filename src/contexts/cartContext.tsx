@@ -7,6 +7,7 @@ import { CartItemType } from '../pages/Home';
 interface MyOrder {
     orderProducts: CartItemType[] | null;
     orderPrice: number;
+    totalQtdeOrder: number;
     userOrder: User | null;
     cartBuybutton: boolean;
     initiateBuy: (product: CartItemType[], totalPrice: number) => void;
@@ -22,6 +23,7 @@ export const CartProvider: React.FC = ({ children }) => {
     const {signed, signIn, user} = useAuth();
     const [userOrder, setUserOrder] = useState<User | null>(null);
     const [orderPrice, setOrderPrice] = useState<number>(0);
+    const [totalQtdeOrder, setTotalQtdeOrder] = useState<number>(0);
     const [orderProducts, setOrderProducts] = useState<CartItemType[]>({} as CartItemType[]);
 
     useEffect(() => {
@@ -40,10 +42,30 @@ export const CartProvider: React.FC = ({ children }) => {
 
         
         
+
+
     }, [])
 
     
+    // const calcAmountTotal = ( () => {
+    //     console.log('console dentro calcamount',orderProducts);
+    //     return orderProducts.reduce((ack: number, item) => ack + item.amount, 0)
     
+    // });
+    const calcAmountTotal = () => {
+        let count = 0;
+        orderProducts.map(item => (
+            setTotalQtdeOrder(count + item.amount)
+        ))
+        console.log('###console dentro calcamountTotal: ', totalQtdeOrder);
+
+    };
+    // const calcAmountTotal = (items: CartItemType[]) => {
+    //     items.reduce((ack: number, item) => ack + item.amount, 0)
+    // };
+        // const amountTotal = calcAmountTotal(orderProducts);
+        // setTotalQtdeOrder(amountTotal);
+        console.log('***|||||||***calcAmountTotal: ', calcAmountTotal);
 
    
     const addProduct = (product: CartItemType) => {
@@ -54,6 +76,7 @@ export const CartProvider: React.FC = ({ children }) => {
         
             
             if(isItemCart) {
+                
                 return orderProducts.map(item => (item._id === product._id ?
                     {...orderProducts, amount: Number(item.amount + 1)} : item))
             }
@@ -98,7 +121,7 @@ export const CartProvider: React.FC = ({ children }) => {
 
 
 return(
-    <CartContext.Provider value={{cartBuybutton: !!orderProducts, orderProducts, orderPrice, userOrder, initiateBuy, addProduct, removeFromCart}}>
+    <CartContext.Provider value={{cartBuybutton: !!orderProducts, orderProducts, orderPrice, userOrder, initiateBuy, addProduct, removeFromCart, totalQtdeOrder}}>
         { children }:
     </CartContext.Provider>
 )};

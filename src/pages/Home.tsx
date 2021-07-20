@@ -72,7 +72,7 @@ export function Home() {
         console.log('Itens do CartItem dentro do Home e UseEffect ', cartItems );
 
         
-    }, []);
+    }, [orderProducts]);
 
 
     const getTotalItems = (items: CartItemType[]) => items.reduce((ack: number, items) => ack + items.amount, 0);

@@ -20,10 +20,12 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart, showCartP
     const [totalCartItens, setTotalCartItens] = useState<number>(0);
 
     // const calculateTotal = (items: CartItemType[]) => items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
-   
+    // const calcAmountTotal = (items: CartItemType[]) => items.reduce((ack: number, item) => ack + item.amount, 0);
+    // const amountTotal = calcAmountTotal(cartItems);
     // for (let cartIs in cartItem){
     //     console.log(cartIs[price]);
     //   }
+    // console.log('amount', amountTotal);
 
     
     console.log('Total do carrinho: ', totalCartItens)
