@@ -67,6 +67,7 @@ export function Home() {
 
             return [...orderProducts];
         });
+        
 
 
         console.log('Itens do CartItem dentro do Home e UseEffect ', cartItems );

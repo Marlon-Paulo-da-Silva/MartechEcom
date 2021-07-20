@@ -1,5 +1,6 @@
 
 import React, {createContext, useContext, useEffect, useState} from 'react';
+import { toast} from 'react-toastify';
 import { useAuth } from './authContext';
 import {User} from '../contexts/authContext';
 import { CartItemType } from '../pages/Home';
@@ -100,18 +101,20 @@ export const CartProvider: React.FC = ({ children }) => {
     );
     const initiateBuy = (product: CartItemType[], totalPrice: number) => {
 
-        if(signed) {
+        // if(signed) {
             
         setUserOrder(user);
         setOrderProducts(product)
         setOrderPrice(totalPrice)
-        
+        // toast('é necessário realizar o login');
         localStorage.setItem('@MartechEcom:cart', JSON.stringify(orderProducts));
         localStorage.setItem('@MartechEcom:totalprice', JSON.stringify(orderPrice));
         console.log("log dentro do Cartcontext", userOrder, orderProducts, orderPrice );
-        } else {
-            alert('é necessário realizar o login')
-        }
+        // alert('Pedido Realizado');
+
+        // } else {
+            // alert('é necessário realizar o login')
+        // }
 
        
     }
