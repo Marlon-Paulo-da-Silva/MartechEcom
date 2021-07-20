@@ -53,7 +53,7 @@ export function Home() {
     const {data, isLoading, error} = useQuery<CartItemType[]>('products', getProducts);
     
 
-    const {orderPrice, orderProducts, userOrder, cartBuybutton, initiateBuy, addProduct} = useCart();
+    const {orderPrice, orderProducts, userOrder, cartBuybutton, initiateBuy, addProduct, removeFromCart} = useCart();
 
 
     useEffect(() => {
@@ -82,22 +82,14 @@ export function Home() {
 
         addProduct(clickedItem);
         console.log('context após o addProduct dentro do handle', orderProducts);
+        console.log('clickedItem após o addProduct dentro do handle', (clickedItem.amount += 1));
 
 
     }
 
-    const handleRemoveFromCart = (id: number) => (
-        setCartItems(prev => (
-            prev.reduce((ack, item) => {
-                if(item._id === id){
-                    if (item.amount === 1) return ack;
-                    return [...ack, {...item, amount: item.amount - 1}];
-                } else {
-                    return [...ack, item];
-                }
-            }, [] as CartItemType[])
-        ))
-    );
+    const handleRemoveFromCart = (id: number) =>{ 
+        removeFromCart(id);
+    }
 
     function handleSignOut(){
         signOut();

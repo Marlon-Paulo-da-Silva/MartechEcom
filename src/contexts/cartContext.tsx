@@ -11,6 +11,7 @@ interface MyOrder {
     cartBuybutton: boolean;
     initiateBuy: (product: CartItemType[], totalPrice: number) => void;
     addProduct: (product: CartItemType) => void;
+    removeFromCart: (id: number) => void;
     
 }
 
@@ -54,15 +55,26 @@ export const CartProvider: React.FC = ({ children }) => {
             
             if(isItemCart) {
                 return orderProducts.map(item => (item._id === product._id ?
-                    {...orderProducts, amount: Number(item.amount )+ 1} : item))
+                    {...orderProducts, amount: Number(item.amount + 1)} : item))
             }
             console.log('contexto na Home dentro do addToCart', orderProducts);
             
 
             setOrderProducts( [...orderProducts, {...product, amount: 1}]);
-      
-
     }
+
+    const removeFromCart = (id: number) => (
+        setOrderProducts(prev => (
+            prev.reduce((ack, item) => {
+                if(item._id === id){
+                    if (item.amount === 1) return ack;
+                    return [...ack, {...item, amount: item.amount - 1}];
+                } else {
+                    return [...ack, item];
+                }
+            }, [] as CartItemType[])
+        ))
+    );
     const initiateBuy = (product: CartItemType[], totalPrice: number) => {
 
         if(signed) {
@@ -86,7 +98,7 @@ export const CartProvider: React.FC = ({ children }) => {
 
 
 return(
-    <CartContext.Provider value={{cartBuybutton: !!orderProducts, orderProducts, orderPrice, userOrder, initiateBuy, addProduct}}>
+    <CartContext.Provider value={{cartBuybutton: !!orderProducts, orderProducts, orderPrice, userOrder, initiateBuy, addProduct, removeFromCart}}>
         { children }:
     </CartContext.Provider>
 )};
