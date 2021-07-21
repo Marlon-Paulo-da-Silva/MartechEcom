@@ -58,7 +58,7 @@ export const CartProvider: React.FC = ({ children }) => {
         orderProducts.map(item => (
             setTotalQtdeOrder(count + item.amount)
         ))
-        console.log('###console dentro calcamountTotal: ', totalQtdeOrder);
+        console.log('###console dentro calcamountTotal: ');
 
     };
     // const calcAmountTotal = (items: CartItemType[]) => {

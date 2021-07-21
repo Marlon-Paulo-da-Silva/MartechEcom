@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import Button from "@material-ui/core/Button";
+import { Alert, AlertTitle } from '@material-ui/lab';
 import { Link, useHistory } from 'react-router-dom';
 import {useCart} from '../contexts/cartContext';
 import { CartItemType } from '../pages/Home';
@@ -6,13 +8,17 @@ import { CartItemType } from '../pages/Home';
 import '../styles/myorder.scss';
 type Props  = {
     cartItems: CartItemType[];
+    addToCart: (clickedItem: CartItemType) => void;
+    removeFromCart: (id: number) => void;
 }
 
 
 export function MyOrder() {
     let history = useHistory();
-    const {orderPrice, orderProducts, userOrder, cartBuybutton, initiateBuy} = useCart();
+    const {orderPrice, orderProducts, userOrder, cartBuybutton, initiateBuy, addProduct, removeFromCart} = useCart();
+
     const [cartItems, setCartItems] = useState([] as CartItemType[]);
+
 
 
     useEffect(() => {
@@ -25,16 +31,34 @@ export function MyOrder() {
        })
        console.log('order products dentro da página de carrinho fora do useeffect');
        console.log('Context cartContext dentro Myorder ', orderProducts, orderPrice);
+       console.log('######Context cartContext dentro Myorder ', cartItems);
        console.log('tamanho do orderproducts ', orderProducts?.length)
 
-      }, []);
+      }, [orderProducts]);
 
       function initiateBuyCart(items: CartItemType[],calculTotal: number){
-
+        <Alert severity="success">
+            <AlertTitle>Success</AlertTitle>
+            This is a success alert — <strong>check it out!</strong>
+        </Alert>
         initiateBuy(items, calculTotal);
         
-        alert('é necessário realizar o login')
-        history.push("/");
+        
+        // history.push("/");
+    }
+
+    const addToCart = (clickedItem: CartItemType) => {
+        console.log('context ANTES Do addProduct dentro do handle', orderProducts);
+
+        addProduct(clickedItem);
+        console.log('context após o addProduct dentro do handle', orderProducts);
+        console.log('clickedItem após o addProduct dentro do handle', (clickedItem.amount += 1));
+
+
+    }
+
+    const handleRemoveFromCart = (id: number) =>{ 
+        removeFromCart(id);
     }
 
 
@@ -57,7 +81,26 @@ export function MyOrder() {
                                 <span>Preço: {product.price}</span>
                             </div>
                         </div>
-                        <div className="qtde-item">{product.amount}</div>
+                        <div className="qtde-item">
+                        <Button
+                            size='small'
+                            disableElevation
+                            variant='contained'
+                            onClick={() => addToCart(product)}
+                        >
+                            +
+                        </Button>
+                        <p>{product.amount}</p>
+                        <Button
+                            size='small'
+                            disableElevation
+                            variant='contained'
+                            onClick={() => removeFromCart(product._id)}
+                        >
+                            -
+                        </Button>
+
+                            </div>
                     </div>
                     ))}
                 </div>

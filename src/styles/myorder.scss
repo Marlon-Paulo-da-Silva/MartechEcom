@@ -24,11 +24,16 @@
     align-items: center;
     background-color: white;
     border-radius: 30px;
+    padding: 10px;
 
     .description-item{
         width: 450px;
         display: flex;
         padding: 0px 10px;
+    }
+
+    .qtde-item {
+        text-align: center;
     }
 
     .about-item{

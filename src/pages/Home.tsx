@@ -73,7 +73,7 @@ export function Home() {
         console.log('Itens do CartItem dentro do Home e UseEffect ', cartItems );
 
         
-    }, [orderProducts]);
+    }, []);
 
 
     const getTotalItems = (items: CartItemType[]) => items.reduce((ack: number, items) => ack + items.amount, 0);
@@ -106,10 +106,10 @@ export function Home() {
 
     return ( 
         <div>
-            
-            {signed  ? <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Minha Conta {user?.name}</button></Link>  : <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Login</button></Link>}
-            {signed  ? <Link to="/"><button className="login" onClick={handleSignOut}> <i className='bx bxs-user-circle'></i> Sair</button></Link>  : <Link to="/signinlogin"><button className="login"> <i className='bx bxs-user-circle'></i> Cadastrar</button></Link>}
-            
+            <div className="login">
+            {signed  ? <Link to="/signinlogin"><button> <i className='bx bxs-user-circle'></i> Minha Conta {user?.name}</button></Link>  : <Link to="/signinlogin"><button > <i className='bx bxs-user-circle'></i> Login</button></Link>}
+            {signed  ? <Link to="/"><button  onClick={handleSignOut}> <i className='bx bxs-user-circle'></i> Sair</button></Link>  : <Link to="/signinlogin"><button > <i className='bx bxs-user-circle'></i> Cadastrar</button></Link>}
+            </div>
             <section className="section destaque">
                 <div className="titulo">
                     <h1>Produtos em Destaque</h1>

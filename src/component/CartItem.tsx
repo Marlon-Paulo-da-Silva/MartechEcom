@@ -1,4 +1,5 @@
 import Button from "@material-ui/core/Button";
+import { useEffect } from "react";
 
 import { CartItemType } from '../pages/Home';
 import '../styles/cartItem.scss';
@@ -16,7 +17,12 @@ type TotalOrder = {
 
 
 
-const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
+
+
+const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => {
+
+
+  return (
   <div>
     <div className="cartItem-container">
       {/* <img src={item.image} alt={item.name} />
@@ -66,7 +72,7 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
               >
                 +
               </Button>
-              <p>{item.amount}</p>
+              <p>{!!item.amount && item.amount}</p>
               <Button
                 size='small'
                 disableElevation
@@ -82,6 +88,7 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => (
     </div>
     
   </div>
-);
+  )
+};
 
 export default CartItem;
