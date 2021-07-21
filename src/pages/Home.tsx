@@ -3,7 +3,7 @@ import {useQuery} from 'react-query';
 
 import {useAuth} from "../contexts/authContext";
 
-import { Item } from "../Component/Item";
+import  Item  from "../Component/Item";
 import Cart from "../Component/Cart";
 import CartPopup from "../Component/CartPopup";
 

@@ -19,13 +19,12 @@ type Props = {
 const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart, showCartPopup,  setShowCartPopup}) => {
     const [totalCartItens, setTotalCartItens] = useState<number>(0);
 
-    // const calculateTotal = (items: CartItemType[]) => items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
-   
+    const calculateTotal = (items: CartItemType[]) => items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
+    // const totalItensCount = calculateTotal(cartItems);
     // for (let cartIs in cartItem){
     //     console.log(cartIs[price]);
     //   }
-
-    
+   
     console.log('Total do carrinho: ', totalCartItens)
     let history = useHistory();
 
@@ -45,7 +44,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart, showCartP
         setBuyItens(items);
         setTotalItens(calculTotal);
 
-        initiateBuy(items, calculTotal);
+        // initiateBuy(items, calculTotal);
         
         console.log('Context cartContext dentro Cart ', orderProducts, orderPrice);
         console.log('UseState cartContext dentro Cart ', buyItens, totalItens);
