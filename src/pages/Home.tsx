@@ -109,6 +109,7 @@ export function Home() {
             <div className="login">
             {signed  ? <Link to="/signinlogin"><button> <i className='bx bxs-user-circle'></i> Minha Conta {user?.name}</button></Link>  : <Link to="/signinlogin"><button > <i className='bx bxs-user-circle'></i> Login</button></Link>}
             {signed  ? <Link to="/"><button  onClick={handleSignOut}> <i className='bx bxs-user-circle'></i> Sair</button></Link>  : <Link to="/signinlogin"><button > <i className='bx bxs-user-circle'></i> Cadastrar</button></Link>}
+            {signed  ? <Link to="/"><button  onClick={handleSignOut}> <i className='bx bxs-user-circle'></i> Minhas Compras</button></Link>  : null}
             </div>
             <section className="section destaque">
                 <div className="titulo">
