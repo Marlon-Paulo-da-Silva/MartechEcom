@@ -2,7 +2,7 @@ import CartItem from './CartItem';
 import { useHistory } from "react-router-dom";
 import { CartItemType } from '../pages/Home';
 import {useCart} from '../contexts/cartContext';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import  {User}  from  '../contexts/authContext';
 import '../styles/cart.scss';
 
@@ -17,7 +17,6 @@ type Props = {
 
 
 const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart, showCartPopup,  setShowCartPopup}) => {
-    const [totalCartItens, setTotalCartItens] = useState<number>(0);
 
     const calculateTotal = (items: CartItemType[]) => items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
     // const totalItensCount = calculateTotal(cartItems);
@@ -25,7 +24,6 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart, showCartP
     //     console.log(cartIs[price]);
     //   }
    
-    console.log('Total do carrinho: ', totalCartItens)
     let history = useHistory();
 
     // const calcTotal = calculateTotal(cartItems);
@@ -36,7 +34,6 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart, showCartP
 
     useEffect(() => {
         
-        console.log('testando caritens que vai para o Cart.tsx', cartItems);
     }, [])
     
     function initiateBuyCart(items: CartItemType[],calculTotal: number){
@@ -52,7 +49,6 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart, showCartP
     }
 
     
-    console.log('carrinho iniciado com sucesso ', orderProducts);
 
     return (
             <>

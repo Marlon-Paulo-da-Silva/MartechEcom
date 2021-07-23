@@ -66,7 +66,6 @@ export const CartProvider: React.FC = ({ children }) => {
     // };
         // const amountTotal = calcAmountTotal(orderProducts);
         // setTotalQtdeOrder(amountTotal);
-        console.log('***|||||||***calcAmountTotal: ', calcAmountTotal);
 
    
     const addProduct = (product: CartItemType) => {

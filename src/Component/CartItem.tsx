@@ -1,5 +1,4 @@
 import Button from "@material-ui/core/Button";
-import { useEffect } from "react";
 
 import { CartItemType } from '../pages/Home';
 import '../styles/cartItem.scss';

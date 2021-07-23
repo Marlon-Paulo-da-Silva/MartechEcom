@@ -5,12 +5,10 @@ import {useAuth} from "../contexts/authContext";
 
 import  {Item}  from "../Component/Item";
 import Cart from "../Component/Cart";
-import CartPopup from "../Component/CartPopup";
 
 
 
 
-import Drawer from '@material-ui/core/Drawer';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import Badge from '@material-ui/core/Badge';
@@ -36,10 +34,7 @@ export type CartItemType = {
 const getProducts = async(): Promise<CartItemType[]> =>
   await(await fetch("https://raw.githubusercontent.com/Marlon-Paulo-da-Silva/MartechEcom/main/src/Data/data.json")).json();
 
-type Products = {
-    item: CartItemType;
-    handleAddToCart: (clickedItem: CartItemType) => void
-}
+
 
 export function Home() {
     const {signed, signOut, user} = useAuth();
@@ -61,8 +56,7 @@ export function Home() {
        
             
             setCartItemsWithContext([...orderProducts]);
-            console.log('contexto na Home dentro do addToCart', orderProducts);
-            console.log('useState da Home dentro do addToCart', cartItemsWithContext);
+
             console.log('CartItens da Home dentro do addToCart', cartItems);
 
             return [...orderProducts];
@@ -70,7 +64,6 @@ export function Home() {
         
 
 
-        console.log('Itens do CartItem dentro do Home e UseEffect ', cartItems );
 
         
     }, []);
@@ -124,18 +117,10 @@ export function Home() {
                             removeFromCart={handleRemoveFromCart}  />
                     
                 </div>
-                {/* <div className="DrawerStyle">
-                    <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
-                        
-                        <Cart 
-                            cartItems={cartItems} 
-                            addToCart={handleAddToCart}
-                            removeFromCart={handleRemoveFromCart}  />
-                    </Drawer>
-                </div> */}
+                
                 
                 <div className="IconButtonStyle" onClick={openShowCartPopup}>
-                    <Badge badgeContent={orderProducts?.length} color='error' />
+                    <Badge className="icon-badge" badgeContent={orderProducts?.length} color='error' />
                     <ShoppingCartIcon />
                 </div>
                 {/* <div className="IconButtonStyle" onClick={() => setCartOpen(true)}>
