@@ -9,6 +9,7 @@ interface MyOrder {
     orderProducts: CartItemType[] | null;
     orderPrice: number;
     totalQtdeOrder: number;
+    totalPriceOrder: number;
     userOrder: User | null;
     cartBuybutton: boolean;
     initiateBuy: (product: CartItemType[], totalPrice: number) => void;
@@ -25,6 +26,7 @@ export const CartProvider: React.FC = ({ children }) => {
     const [userOrder, setUserOrder] = useState<User | null>(null);
     const [orderPrice, setOrderPrice] = useState<number>(0);
     const [totalQtdeOrder, setTotalQtdeOrder] = useState<number>(0);
+    const [totalPriceOrder, setTotalPriceOrder] = useState<number>(0);
     const [orderProducts, setOrderProducts] = useState<CartItemType[]>({} as CartItemType[]);
 
     useEffect(() => {
@@ -43,6 +45,9 @@ export const CartProvider: React.FC = ({ children }) => {
 
         
         
+        
+        
+        
 
 
     }, [])
@@ -54,11 +59,13 @@ export const CartProvider: React.FC = ({ children }) => {
     
     // });
     const calcAmountTotal = () => {
-        let count = 0;
-        orderProducts.map(item => (
-            setTotalQtdeOrder(count + item.amount)
-        ))
-        console.log('###console dentro calcamountTotal: ');
+        if(!!orderProducts){
+            setTotalPriceOrder(0);
+            orderProducts.map((item) => {
+                setTotalPriceOrder(totalPriceOrder + (item.amount * item.price));
+            })
+        }
+        console.log('###console dentro calcamountTotal: ', totalPriceOrder);
 
     };
     // const calcAmountTotal = (items: CartItemType[]) => {
@@ -78,15 +85,16 @@ export const CartProvider: React.FC = ({ children }) => {
             if(isItemCart) {
                 
                 return orderProducts.map(item => (item._id === product._id ?
-                    {...orderProducts, amount: Number(item.amount + 1)} : item))
+                    {...orderProducts, amount: Number(item.amount + 1), totalPrice: Number(item.amount * item.price)} : item))
             }
             console.log('contexto na Home dentro do addToCart', orderProducts);
             
 
-            setOrderProducts( [...orderProducts, {...product, amount: 1}]);
+            setOrderProducts( [...orderProducts, {...product, amount: 1, totalPrice: product.price}]);
+            calcAmountTotal();
     }
 
-    const removeFromCart = (id: number) => (
+    const removeFromCart = (id: number) => {
         setOrderProducts(prev => (
             prev.reduce((ack, item) => {
                 if(item._id === id){
@@ -97,7 +105,10 @@ export const CartProvider: React.FC = ({ children }) => {
                 }
             }, [] as CartItemType[])
         ))
-    );
+
+        calcAmountTotal();
+        
+    };
     const initiateBuy = (product: CartItemType[], totalPrice: number) => {
 
         // if(signed) {
@@ -123,7 +134,7 @@ export const CartProvider: React.FC = ({ children }) => {
 
 
 return(
-    <CartContext.Provider value={{cartBuybutton: !!orderProducts, orderProducts, orderPrice, userOrder, initiateBuy, addProduct, removeFromCart, totalQtdeOrder}}>
+    <CartContext.Provider value={{cartBuybutton: !!orderProducts, orderProducts, orderPrice, userOrder, initiateBuy, addProduct, removeFromCart, totalQtdeOrder, totalPriceOrder}}>
         { children }:
     </CartContext.Provider>
 )};

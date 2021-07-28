@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import Button from "@material-ui/core/Button";
-import swal from 'sweetalert';
 
 import { Link, useHistory } from 'react-router-dom';
 import {useCart} from '../contexts/cartContext';

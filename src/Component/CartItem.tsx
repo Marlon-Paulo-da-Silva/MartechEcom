@@ -57,7 +57,7 @@ const CartItem: React.FC<Props> = ({ item, addToCart, removeFromCart }) => {
                   <img className="img-cartItem" src={item.image} alt="imagemitem" />
                   <div className="about-cartItem">
                       <span>{item.name}</span>
-                      <span>Preço: {item.price}</span>
+                      <span>Preço: {item.totalPrice}</span>
                   </div>
               </div>
               

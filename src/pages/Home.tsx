@@ -25,7 +25,7 @@ export type CartItemType = {
   price: number;
   numReviews: number;
   amount: number;
-  totalproduct: number;
+  totalPrice: number;
 }
 
 

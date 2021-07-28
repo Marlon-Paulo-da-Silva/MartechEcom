@@ -28,7 +28,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart, showCartP
 
     // const calcTotal = calculateTotal(cartItems);
     
-    const {orderPrice, orderProducts, userOrder, cartBuybutton, initiateBuy} = useCart();
+    const {orderPrice, orderProducts, userOrder, cartBuybutton, initiateBuy, totalPriceOrder} = useCart();
     const [buyItens, setBuyItens] = useState([] as CartItemType[]);
     const [totalItens, setTotalItens] = useState<number>(0);
 
@@ -71,7 +71,7 @@ const Cart: React.FC<Props> = ({ cartItems, addToCart, removeFromCart, showCartP
             </div>
             <div className="cartItem-order">
                 {/* <div className="cartItems-total">Valor total: R${calculateTotal(cartItems).toFixed(2)}</div> */}
-                <div className="cartItems-total">Valor total: R$1000</div>
+                <div className="cartItems-total">Valor total: R${totalPriceOrder}</div>
                 <button className="final-cartItems-button" onClick={() => initiateBuyCart(cartItems, 1000)}>Finalizar Pedido</button>
             </div>
             </>}
